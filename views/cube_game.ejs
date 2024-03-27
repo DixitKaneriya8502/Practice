@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cube Game</title>
+    <style>
+        table,td,th {
+            border: 1px solid black;
+            margin-left: 20%;
+        }
+        td{
+            height: 80px; width: 80px;
+        }
+        body {
+            background-color: lightpink;
+        }
+        #score {
+            margin-left: 20%;
+            font-weight: bolder;
+        }
+        #time1 {
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+    <span id="score">Score: Null</span>
+    <h6 id="ti"></h6>
+    <table id="tbl">
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br><br>
+    <input type="button" value="Start" id="time" onclick="time1()" style="margin-left: 20%; width: 15%;">
+
+
+<script>
+    function add(){
+        let tblrow = document.querySelectorAll("#tbl tr");
+        for (let tr of tblrow) {                                       //adding cells to the row
+            let td = document.createElement("td");
+            tr.appendChild(td);
+        }
+    }
+
+    function add1(){
+        let table = document.querySelector("#tbl");
+        let tr = document.createElement("tr");
+        let cols = document.getElementById("tbl").rows[0].cells.length
+                                                                        //add cells to the rows same as the number of columns
+        for (let i=1; i<=cols; i++) {
+            let td = document.createElement('td');
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
+    function newRandomColor() {
+        var myArray = [];
+        for (let i=0; i<10; i++) {
+            const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            myArray.push(randomColor);
+        }                                                               //random color to table
+        var randomc = myArray[Math.floor(Math.random() * myArray.length)];
+
+        let tblrow = document.querySelectorAll("td");
+        for (let tr of tblrow) {
+            tr.style.opacity="1";
+            tr.style.backgroundColor = randomc;
+        }
+        setopacity();
+    }
+    newRandomColor();
+
+    function setopacity() {
+        let tblrow = document.querySelectorAll("td");
+                                                             //set opacity
+
+        let s=Math.floor(Math.random() * tblrow.length)
+        tblrow[s].style.opacity="50%";
+    }
+
+    let score=0;
+    let sc1 = document.querySelector("#score");
+
+    let tblrow = document.querySelector("#tbl");
+    tblrow.addEventListener("click", function(e){
+        let dp = e.target.style.opacity;
+        if(dp == 0.5){
+            add1();                                          //main logic
+            score++
+            sc1.innerText = `score ${score}`;
+
+            add();
+            newRandomColor();
+        }
+        else{
+            score--;
+            sc1.innerText = `score ${score}`
+            alert("error");
+        }
+    })
+
+    function time1() {
+        let time = 10;
+        const set = setInterval(()=>{
+            if(time>0) {
+                let ti = document.getElementById("ti");
+                ti.innerText=time;
+                time--;                                   //setting time interval
+            }
+            else{
+                alert("time over");
+                location.reload();
+            }
+        },1000)
+    }
+</script>
+</body>
+</html>

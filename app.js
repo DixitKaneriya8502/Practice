@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const port = 6570
 const bodyParser = require("body-parser")
-const db = require('../../db')
+const db = require('./db')
 const path = require("path")
 const { log } = require("console")
 const md5 = require('md5');
@@ -28,6 +28,10 @@ app.get('/register', (req, res) => {
 app.get('/login', (req, res) => {
 
     res.render("login")
+})
+
+app.get('/kuku', (req, res) => {
+    res.render("cube_game")
 })
 
 app.post('/loginpage', async (req, res) => {
@@ -84,7 +88,7 @@ app.get('/keycompare', async (req, res) => {
 
     if (data[0].keyss == key && timedifferent < 15000) {
 
-        console.log("regisrter successfully");
+        console.log("register successfully");
         res.render("login");
 
     }
