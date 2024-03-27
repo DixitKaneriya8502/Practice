@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <style>
+        .cont {
+            background-color: rgb(114, 114, 255);
+            padding: 20px;
+            border: 5px dotted red;
+        }
+
+        .tb {
+            max-width: 550px;
+            margin-left: 25%;
+            border: 2px solid black;
+            background-color: rgb(177, 177, 255);
+        }
+
+        .form11 {
+            color: rgb(255, 0, 0);
+            font-size: x-large;
+        }
+
+        .head {
+            font-size: xx-large;
+        }
+
+        #submmit {
+            border: 3px solid black;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 20px;
+            background-color: rgb(54, 52, 52);
+            color: rgb(255, 255, 255);
+        }
+        
+    </style>
+</head>
+<body>
+    <section class="cont">
+        <div class="st">    
+            <h1 class="head"><u >Employee Job Application</u>:</h1>
+            <form id="form1" action="/details" method="post" onsubmit="return application()">
+                <fieldset class="tb">
+                    <legend><u><b class="form11">Basic Details</b></u></legend>
+                    <label for="fname">First Name :</label>
+                    <input type="text" id="fname" name="fname" required placeholder="Enter First Name"><br><br>
+                    <label for="lname ">Last name :</label>
+                    <input type="text" id="lname" name="lname" required placeholder="Enter Last Name"><br><br>
+                    <label for="age">Age :</label>
+                    <input type="number" id="age" name="age" placeholder="Enter Age"><br><br>
+                    <label for="phone">Phone :</label>
+                    <input type="number" id="phone" name="phone" required placeholder="Enter Phone Number"><br><br>
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter Email"><br><br>
+                    <label for="Address1">Address1 :</label>
+                    <input type="text" id="Address1" name="Address1" placeholder="Enter Address"><br>
+                    <p>Gender :
+                    <input type="radio" name="Gender" id="male" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="Gender" id="female" value="Female">
+                    <label for="female">Female</label><br>
+                    <p>Hobbies :
+                        <input type="checkbox" name="Hobbie" id="hobbiecricket" value="Cricket">
+                        <label for="hobbiecricket"> Cricket  </label>
+                        <input type="checkbox" name="Hobbie" id="hobbievolleyball" value="Volleyball">
+                        <label for="hobbievolleyball"> Volleyball  </label>
+                        <input type="checkbox" name="Hobbie" id="hobbiemusic" value="Music">
+                        <label for="hobbiemusic"> Listening Music  </label>
+                        <input type="checkbox" name="Hobbie" id="hobbiemovie" value="Movies">
+                        <label for="hobbiemovie"> Watching Movie  </label>
+                        <br><br>
+                    <label for="Relationship Status">Relationship Status :</label>
+                    <select name="RelationshipStatus" id="Relationship Status">
+                        <option disabled selected value>Select Relationship Status</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit" id="submmit">
+                </fieldset>
+            </form>
+        </div>
+    </section>
+
+
+    <script>
+        function application() {
+            return true;
+        }
+    </script>
+
+</body>
+</html>
+

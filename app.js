@@ -1,17 +1,20 @@
 const express = require("express")
 const app = express()
+const fs = require("fs")
 const port = 6570
 const bodyParser = require("body-parser")
 const db = require('./db')
 const path = require("path")
 const { log } = require("console")
 const md5 = require('md5');
+const crypto = require('crypto');
 
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
     extended: true
 }))
+app.use(express.static('publicnew'));
 app.use(express.static(path.join(__dirname, 'views')))
 
 
@@ -30,9 +33,6 @@ app.get('/login', (req, res) => {
     res.render("login")
 })
 
-app.get('/kuku', (req, res) => {
-    res.render("cube_game")
-})
 
 app.post('/loginpage', async (req, res) => {
     var loggin = req.body.uname
@@ -88,7 +88,7 @@ app.get('/jobform', (req, res) => {
 })
 
 app.get('/sort', (req, res) => {
-    res. render("sort")
+    res.render("sort")
 })
 
 app.get('/tictactoe', (req, res) => {
@@ -98,6 +98,125 @@ app.get('/tictactoe', (req, res) => {
 app.get('/stopwatch', (req, res) => {
     res.render("stpWatch")
 })
+
+app.get("/posts", (req, res) => {
+    if (true) {
+        res.render('allstudent')
+    }
+    // catch (error) {
+    //     res.write("Try again!!")
+    //     return res.end()
+    // }
+
+})
+
+app.get('/kuku', (req, res) => {
+    res.render("cube_game")
+})
+
+app.get('/posts/:id', (req, res) => {
+    if (true) {
+        res.render('post', { id: req.params.id })
+    }
+    // else (error) {
+    //     res.write("Try again!!")
+    //     return res.end()
+    // }
+})
+
+// app.all("*", (req, res) => {
+//     res.end("No data found in database... &#128560;")
+// })
+// console.log("hello");
+
+
+
+
+
+
+
+
+
+
+
+app.get('/', (req, res) => {
+    res.status(200);
+    const username = 'Dixit Kaneriya';
+    res.render("index", { username });
+});
+
+app.get('/form', (req, res) => {
+    res.status(200);
+    res.render("appli_form");
+    // res.send("Welcome to Dixit's Server!!");
+});
+
+app.post('/details', (req, res) => {
+    res.status(200);
+
+
+    var userdata = req.body;
+    console.log(userdata.fname);
+    userdata.id = crypto.randomUUID();
+    db.connect(function (err) {
+        if (err) throw err;
+        // con.query("SELECT * FROM customers", function (err, result, fields) {
+        //   if (err) throw err;
+        //   console.log(result);
+        // });
+        var sql = `INSERT INTO usser (fname, lname, age, address) VALUES('${req.body.fname}', '${req.body.lname}', '${req.body.age}','${req.body.Address1}') `;
+        console.log("gidjd");
+        db.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("Number of records inserted: " + result.affectedRows);
+        });
+    });
+
+    var datasave = fs.readFileSync("data.json", "utf-8")
+
+    var parsedata = JSON.parse(datasave);
+    parsedata.push(userdata)
+
+    fs.writeFileSync("data.json", JSON.stringify(parsedata), function (err) {
+        if (err) throw err;
+        console.log("File Saved")
+    });
+    // array = []
+    res.render("details", { data: parsedata });
+});
+
+app.post("/more", (req, res) => {
+    res.status(200);
+
+    var fetchdata = req.body;
+    var data = fs.readFileSync("data.json", "utf-8");
+    console.log(JSON.stringify(req.body))
+    var value = Object.keys(fetchdata).toString();
+    var object = Object.values(data).toString();
+    console.log(value);
+    console.log(object);
+
+    console.log("Deleted button has been clicked: " + req.body.buttonId)
+
+    
+
+    var data1 = JSON.parse(data)
+    var pass
+
+    data1.forEach(element => {
+        if (element.id == value) {
+            pass = element
+        }
+        else {
+            console.log("Not a match")
+        }
+    });
+    console.log(pass);
+    res.render("dummy", { data: pass });
+});
+
+
+
 
 
 

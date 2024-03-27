@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <style>
+        body{
+            background-color: rgb(240, 248, 184);
+        }
+
+        #container {
+            background-color: #484444;
+
+        }
+        
+        table, th, tr, td {
+            margin-left: 270px;
+            font-size: 20px;
+            border: 2px solid black;
+            text-align: center;
+            color: rgba(199, 40, 40, 0.753);
+            background-color: rgb(109, 250, 250);
+
+            th {
+                width: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <section id="container">
+            <caption><b style="font-size: 40px; color: whitesmoke;">User Details:</b></caption>
+            <table>
+                <tr class="f">
+                    <th>fname</th>
+                    <th>lname</th>
+                    <th>phone</th>
+                    <th>email</th>
+                    <th>more</th>
+                </tr>
+
+                <form action="/more" method="post">
+
+                    <% for (let i=0; i<data.length; i++) { %> 
+                   
+                    <div>
+                        <tr class="frm">
+                            <td><%= data[i].fname %></td>
+                            <td><%= data[i].lname %></td>
+                            <td><%= data[i].phone %></td>
+                            <td><%= data[i].email %></td>
+                            <td><input type="submit" value="More Info." name="<%= data[i].id %>"></td>
+                            <td><input type="button" value="Delete" name="<%= data[i].id %>"></td>
+                        </tr>
+                    </div>
+                    <% } %>
+                </form>
+            </table>
+        </section>
+    </div>
+</body> 
+</html>

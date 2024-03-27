@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th,tr, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        } 
+    </style>
+</head>
+<body>
+    <h1>Details</h1>
+    <table id="t1">
+        <tr></tr>
+    </table>
+    <br>
+    <button onclick="comment()">Show Comment</button>
+    <br>
+    Comment: <div id="d1"></div>
+</body>
+
+<script>
+    let obj = {}
+    let page = 1;
+
+
+    // showing comment 
+
+    async function comment() {
+        let comm = await fetch('https://jsonplaceholder.typicode.com/comments').then(response => {return response.json()})
+        const idarray = document.location.pathname.split("/");
+        const id = idarray[idarray.length - 1]
+        console.log(id);
+
+        let commentObj2 = comm.filter(function (el) {
+            return el.postId == id;
+        })
+        console.log(commentObj2);
+        if (document.getElementById('d1').style.display == '') {
+            document.getElementById('d1').style.display = 'none'
+        }else{
+            document.getElementById('d1').style.display = ''
+            document,getElementById('d1').innerHTML = ''
+        }
+        for(comm2 of commentObj2){
+            document.getElementById('d1').innerHTML += `--> &nbsp;`+ comm2.body + `<br><br>`
+        }
+    }
+
+
+    // data to table
+
+    function tablecreate(data1, pageno) {
+        console.log(data1);
+        const keys = Object.keys(data1);
+        let a = '<tr>';
+            for (let i = 0; i<keys.length; i++) {
+                a = a + '<th>' + keys[i] + '</th>'
+            }
+            a+='</tr>'
+
+            let val2 = Object.values(data1);
+            let b = '<tr>';
+                for (let i=0; i< val2.length; i++) {
+                    b= b +'<td>' + val2[i] + '</td>'
+                }
+                b+= '</tr>'
+                document.getElementById('t1').innerHTML = a + b;
+    }
+
+
+    // return url + scan data
+
+    const res = fetch('https://jsonplaceholder.typicode.com/posts/<%=id%>').then(response => {return response.json() }).then(data1 => { obj=data1
+        tablecreate(data1,1)
+    })
+</script>
+</html>

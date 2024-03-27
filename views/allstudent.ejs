@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, tr, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Request</h1>
+    <div id="div1">
+        <button id="leftl" onclick="pagination('left')"><</button>
+        <span id="pageno"></span>
+        <button id="rightl" onclick="pagination('right')">></button>
+    </div>
+    <br>
+
+    Search: <input type="text" name="Search" id="" onkeyup="search(this.value)">
+    <br><br>
+
+    <table id="t1">
+        <tr></tr>
+    </table>
+</body>
+
+<script>
+    let obj = {}
+    let page = 1;
+
+
+    //pagination
+
+    document.getElementById('pageno').innerHTML = page;
+    if (page == 1) {
+        document.getElementById('leftl').disabled = true;
+    }
+    if (page == 10) {
+        document.getElementById('rightl').disabled = true;
+    }
+    function pagination(dire) {
+        if (dire == 'left') {
+            page = 1
+            document.getElementById('pageno').innerHTML = page;
+            if (page == 1) {
+                document.getElementById('leftl').disabled = true;
+            }
+            else {
+                document.getElementById('rightl').disabled = false;
+            }
+            tablecreate(obj, page)
+        }
+        else if (dire == 'right') {
+            page += 1
+            document.getElementById('pageno').innerHTML = page;
+            if (page == 10) {
+                document.getElementById('rightl').disabled = true;
+            }
+            else {
+                document.getElementById('leftl').disabled = false;
+            }
+            tablecreate(obj, page)
+        }
+    }
+
+
+    // data to table 
+
+    function tablecreate(data1, pageno) {
+        // console.log(data1);
+        const keys = Object.keys(data1[0]);
+        let a = '<tr>';
+            for (let i = 0; i<keys.length; i++) {
+                a = a + '<th>' + keys[i] + '</th>'
+            }
+            a += '<th>Details</th></tr>'
+
+            let val1 = Object.values(data1);
+            val1 = val1.slice(((pageno - 1) * 10), pageno * 10)
+            let b = '<tr>';
+                for (let i=0; i<val1.length; i++) {
+                    let val2 = Object.values(val1[i]);
+                    for (let i=0; i< val2.length; i++) {
+                        b= b+'<td>' + val2[i] + '</td>'
+                }
+                b+= `<td><a href="/posts/${val2[1]}">View More</a></td>`
+                b+= '</tr>'
+            }
+                document.getElementById('t1').innerHTML=a+b;
+        }
+
+
+        // fetch data to url
+
+        const res = fetch('https://jsonplaceholder.typicode.com/posts').then(response => {return response.json()}).then(data1 => {
+            obj = data1
+            tablecreate(data1, 1)
+        })
+
+        const search = (key) => {
+            var input, filter, table, tr, td, i, txtValue;
+            input = key;
+            filter = input.toUpperCase();
+            table = document.getElementById("t1");
+            tr = table.getElementsByTagName("tr");
+
+            for (i=0; i<tr.length; i++) {
+                for (let j=0; j<4; j++) {
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        }else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            background-image: url("image.png");
+            filter: blur(2px);
+            -webkit-filter: blur(2px);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .userdata {
+            padding: 50px;
+            color: black;
+            border: 2px solid black;
+            background-color: rgb(243, 121, 121);
+        }
+
+        table, th, tr, td {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="img"></div>
+    <div class="userdata">
+        <h2>Personal Data:</h2>
+        <table>
+            <tr>
+                <th>fname</th>
+                <th>lname</th>
+                <th>age</th>
+                <th>phone</th>
+                <th>email</th>
+                <th>Address1</th>
+                <th>Gender</th>
+                <th>Hobbie</th>
+                <th>Relationship Status</th>
+            </tr>
+
+            <tr>
+                <td><%= data.fname %></td>
+                <td><%= data.lname %></td>
+                <td><%= data.age %></td>
+                <td><%= data.phone %></td>
+                <td><%= data.email %></td>
+                <td><%= data.Address1 %></td>
+                <td><%= data.Gender %></td>
+                <td><%= data.Hobbie %></td>
+                <td><%= data.RelationshipStatus %></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
