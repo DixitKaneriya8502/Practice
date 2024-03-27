@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget Password</title>
+    <style>
+        #head {
+            text-align: center;
+        }
+
+        #field{
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <form action="/forgetpassword">
+        <fieldset id="field" style="margin-left: auto; margin-right: auto;">
+            <br>
+            <h3 id="head">Forget Password ?</h3>
+            <h5 id="head">No worries, we'll send you reset instructions.</h5>
+            <table  style="margin-left: auto; margin-right: auto;">
+                <tr>
+                    <td>
+                        <label>Email:</label>
+                        <input type="text" name="email" id="mail">
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+
+            <div style="margin-left: 170px;">
+                <input type="button" name="forgetp" id="forgetp" value="Submit">
+            </div>
+            <br>
+
+        </fieldset>
+
+        Back to login <a href="/login">Login</a>
+    </form>
+</body>
+
+</html>

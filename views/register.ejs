@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="shortcut icon" href="#">
+    <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+    <style>
+        #btnsubmit {
+            outline: none;
+            padding: 12px;
+            border: none;
+            background-color: rgb(25, 121, 211);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #btnreset {
+            outline: none;
+            padding: 12px;
+            border: none;
+            background-color: rgb(25, 121, 211);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #regi {
+            background-color: rgb(186, 255, 249);
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <form  action="/register"  name="loginForm"  method="post" onsubmit="return validation()">
+
+
+        <fieldset id="regi" style="max-width: 500px; margin-left: auto; margin-right: auto;">
+            <h2 style="color: blue; text-align: center;">Registration Form</h2>
+            <table style="margin-left: auto; margin-right: auto;">
+                <br>
+                <tr>
+                    <td>
+                        <label>First Name:</label>
+                        <input type="text" name="fname" id="firstName">
+                        <span id="alertfname" style="display: none; color: red;">Please enter proper Name</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>Email:</label>
+                        <input type="text" name="email" id="mail" >
+                        <span id="alertemail" style="display: none; color: red;">Please enter proper Email</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>Mobile NO.:</label>
+                        <input type="text" name="number" id="phone">
+                        <span id="numberalert" style="display: none; color: red;">Please enter proper Mobile
+                            Number</span>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>User Name:</label>
+                        <input type="text" name="uname" id="name" placeholder="abc123_123">
+                        <span id="unamealert" style="display: none; color: red;">Please enter proper user name</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>Password:</label>
+                        <input type="password" name="md5password" id="pass">
+                        <span id="passalert" style="display: none; color: red;">Please enter valid password</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>Confirm Password:</label>
+                        <input type="password" name="cpassword" id="cpass">
+                        <span id="confirmpassalert" style="display: none; color: red;">Password doesn't match</span>
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+
+            <div style="margin-left: 190px;">
+                <input type="submit" name="sub" id="btnsubmit" value="Submit">
+                <input type="button" name="reset" id="btnreset" value="Reset">
+            </div>
+
+            <br>
+
+        </fieldset>
+
+        Already have an account <a href="/login">Login</a>
+<br><br>
+<% if (key != "") { %>
+    <!-- <a href="">http://localhost:6570/keycompare?key=<%=key%></a> -->
+    <b>Please follow the link for login!! :</b>
+   <u>http://localhost:6570/keycompare?key=<%=key%></u>
+<% } %>
+       
+
+
+    </form>
+
+    <script>
+        function validation() {
+
+            let x = document.forms["loginForm"]["fname"].value;
+            // console.log(x);
+            fnameregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (fnameregex.test(x) == false) {
+                document.getElementById("alertfname").style.display = "block";
+                return false;
+            }
+
+            let mail = document.forms["loginForm"]["email"].value;
+            // console.log(mail);
+            emailregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            if (emailregex.test(mail) == false) {
+                document.getElementById("alertemail").style.display = "block"
+                // alert("change")
+                return false;
+            }
+
+            let numbervalidate = document.forms["loginForm"]["number"].value
+            numberregex = /^\d{10}$/
+            if (numberregex.test(numbervalidate) == false) {
+                document.getElementById("numberalert").style.display = "block"
+                return false;
+            }
+
+            let user = document.forms["loginForm"]["uname"].value
+            unameregex = /^[A-Za-z][A-Za-z0-9_]{7,29}$/
+            if (unameregex.test(user) == false) {
+                document.getElementById("unamealert").style.display = "block"
+                return false;
+            }
+
+            let passwordMD5 = document.forms["loginForm"]["md5password"].value
+            passregex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[-\#\@\$\.\%\&\*])(?=.*[a-zA-Z]).{8,16}$/
+            console.log(passregex);
+            if (passregex.test(passwordMD5) == false) {
+                document.getElementById("passalert").style.display = "block"
+                return false;
+            }  
+
+            let confirmPass = document.forms["loginForm"]["cpassword"].value
+            if(passwordMD5 != confirmPass) {
+                document.getElementById("confirmpassalert").style.display = "block"
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+
+        // function matchPassword() {
+        //     var pw1 = document.getElementById("pass");
+        //     var pw2 = document.getElementById("cpass");
+        //     if (pw1 != pw2) {
+        //         document.getElementById("passalert").style.display = "block"
+        //     } else {
+        //         alert("Password created successfully");
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: #435165;
+        }
+
+        .login {
+            width: 550px;
+            background-color: #ffffff;
+            box-shadow: 5px 5px 5px 5px rgba(2, 2, 2, 2);
+            margin: 25px auto;
+        }
+
+        .login h2 {
+            text-align: center;
+            color: #5b6574;
+            font-size: 24px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #dee0e4;
+        }
+
+        .login form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .login form label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border-radius: 20%; */
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            width: 100px;
+            height: 50px;
+            background-color: #3274d6;
+            color: #ffffff;
+        }
+
+        .login form input[type="password"],   .login form input[type="text"] {
+            width: 300px;
+            height: 50px;
+            border: 1px solid #5353539d;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+
+        .login form input[type="submit"] {
+            width: 306px;
+            padding: 15px;
+            /* padding-left: 20px; */
+            /* margin-top: 20px; */
+            background-color: #3274d6;
+            border: 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #ffffff;
+            transition: background-color 0.2s;
+        }
+
+        .login form input[type="submit"]:hover {
+            background-color: #2868c7;
+            transition: background-color 0.2s;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .end {
+            /* margin-top: 20px; */
+            font-weight: 800;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="login">
+        <h2>Login Page</h2>
+
+        <form action="/loginpage" method="post">
+
+            <fieldset style="max-width: 400px; margin-left: auto; margin-right: auto;">
+                <br>
+
+                <table style="margin-left: auto; margin-right: auto;">
+                    <tr>
+                        <td>
+                            <label>User Name:</label>
+                            <input type="text" name="uname" id="name">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Password:</label>
+                            <input type="password" name="password" id="pass">
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+
+                <div>
+                    <input type="submit" name="login" id="login" value="Login">
+                </div>
+                <br>
+            </fieldset>
+        </form>
+
+        <div class="bottom">
+            <div class="end">
+                Forgot passsword <a href="/forgetpass">Forget Password</a>
+            </div>
+                
+            <div class="end">
+                I'm new here <a href="/register">Register</a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>
