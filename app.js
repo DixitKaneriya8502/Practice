@@ -56,7 +56,7 @@ app.post('/loginpage', async (req, res) => {
         if (data[0].pass == finalpass && data[0].userName == loggin) {
             console.log("Login Success!!");
             // res.render("login")
-            res.end("Login Success!!")
+            res.render("main")
         }
 
         else {
@@ -74,6 +74,32 @@ app.post('/loginpage', async (req, res) => {
     //     var [data]  = await db.query(sql)
     //     console.log(data);
 })
+
+app.get('/cube', (req, res) => {
+    res.render("cube_game")
+})
+
+app.get('/events', (req, res) => {
+    res.render("events_form")
+})
+
+app.get('/jobform', (req, res) => {
+    res.render("form_5")
+})
+
+app.get('/sort', (req, res) => {
+    res. render("sort")
+})
+
+app.get('/tictactoe', (req, res) => {
+    res.render("tic_tac_toe")
+})
+
+app.get('/stopwatch', (req, res) => {
+    res.render("stpWatch")
+})
+
+
 
 app.get('/keycompare', async (req, res) => {
     var key = req.query.key

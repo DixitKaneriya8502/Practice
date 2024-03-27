@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    <p>Sorted array :
+<div id="ary">
+
+<script>
+function printArray(arr, size)
+{
+  var i;
+  for (i = 0; i < size; i++)
+      console.log(arr[i] + " ");
+}
+function bubbleSort(array) {
+    const length = array.length;
+    for (let i = 0; i < length - 1; i++) {
+      for (let j = 0; j < length - i - 1; j++) {
+        if (array[j] > array[j + 1]) {
+          // Swap elements
+          const temp = array[j];
+          array[j] = array[j + 1];
+          array[j + 1] = temp;
+        }
+      }
+    }
+    return array;
+  }
+
+  var array = ["dixit","avi","bhavya","dk","kamyab","faizan",40,54,21,214,88,100,8,67,10,1,];
+  var n = array.length
+  bubbleSort(array, n);
+//   console.log("Sorted array:");
+  document.getElementById("ary").innerHTML = array;
+//   printArray(array, n); 
+</script>
+</div>
+</body>
+</html>

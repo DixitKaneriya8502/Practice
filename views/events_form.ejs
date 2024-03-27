@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Practice</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px dotted red;
+        }
+
+        #mydiv {
+            border: 5px double greenyellow;
+        }
+
+        .droptarget {
+            float: left;
+            width: 100px;
+            height: 35px;
+            margin: 15px;
+            padding: 10px;
+            border: 1px solid #3daff1;
+        }
+
+        #myscroll {
+            border: 5px solid rgb(59, 55, 243);
+            width: 200px;
+            height: 100px;
+            overflow: scroll;
+        }
+    </style>
+    <!-- <script src="event_script.js">
+    </script> -->
+</head>
+
+<body onload="event_onload()">
+    <table style="height: 50px; width: 50px;">
+        <tr>
+            <td style="background-color: darkgrey; color: darkmagenta;">on click
+                <br><br>
+                <input type="button" value="Button" onclick="event_onclick()">
+            </td>
+            <td>on dblclick
+                <br><br>
+                <input type="button" value="Button" ondblclick="event_ondblclick()">
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on mouseover
+
+                <br><br>
+                <img onmouseover="bigimg(this)" onmouseout="normalimg(this)" border="0" src="linkedin.jpeg"
+                    alt="Welcome Kit" width="30">
+            </td>
+            <td>on keypress
+                <br><br>
+                <input type="text" onkeypress="event_onkeypress()">
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on blur
+                <br><br>
+                <input type="text" onblur="event_onblur(this)">
+            </td>
+            <td>on focus
+                <br><br>
+                First Name <input type="text" id="fname" onfocus="event_onfocus(this.id)"><br>
+                Last Name <input type="text" id="lname" onfocus="event_onfocus(this.id)">
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on change
+                <br><br>
+                <p>Select Your Favourite Car :</p>
+                <select id="myselect" onchange="event_onchange()">
+                    <option disabled selected value> Select Car</option>
+                    <option value="Audi">a-Audi</option>
+                    <option value="BMW">b-BMW</option>
+                    <option value="Range Rover">r-Range Rover</option>
+                    <option value="Mercedes">m-Mercedes</option>
+                    <option value="Volvo">v-Volvo</option>
+                </select>
+                <p id="demo"></p>
+            </td>
+            <br>
+        </tr>
+        <tr>
+            <td>on load
+                <br><br>
+                <h5>Events of HTML:</h5>
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on select
+                <br><br>
+                Textbox: <input type="text" value="Select me!!" onselect="event_onselect()">
+            </td>
+            <td>on submit
+                <br><br>
+                <form onsubmit="event_onsubmit()">
+                    Enter Name : <input type="text" name="fname">
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on wheel
+                <br><br>
+                <div id="mydiv" onwheel="event_onwheel()">This is the example of onwheel event. Please roll the mouse
+                    wheel.</div>
+            </td>
+            <td>on drag
+                <br><br>
+                <p>Drag the text to next block.</p>
+                <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Drag me!
+                    </p>
+                </div>
+
+                <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
+                <p style="clear:both;" id="demo1"></p>
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on scroll
+                <br><br>
+                <p>Use the scrollbar.</p>
+                <div id="myscroll" onscroll="event_onscroll()">In my younger and more vulnerable years my father gave me
+                    some advice that I've been turning over in my mind ever since.
+                    <br><br>
+                    'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in this
+                    world haven't had the advantages that you've had.
+                </div>
+            </td>
+            <td>on copy
+                <br><br>
+                <input type="text" value="Copy Me :)" oncopy="event_oncopy()">
+                <p id="practice"></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: darkgrey; color: darkmagenta;">on error
+                <br><br>
+                <img src="image.gif" alt="Me" onerror="event_onerror()">
+            </td>
+            <td>on contextmenu
+                <br><br>
+                <h3>HTML EVENTS</h3>
+                <h5>CONTEXTMENU EVENT</h5>
+
+                <div style="border: 3px double brown; text-align: center;" oncontextmenu="event_oncontextmenu()">
+                    <p>Right Click in the Box !</p>
+                    <p>Context Menu will be Displayed</p>
+                </div>
+                <br>
+                <div id="context1" style="border: 3px double brown; text-align: center;"
+                    oncontextmenu="event_oncontextmenu()">
+                    <p>Right Click in the Box !</p>
+                    <p>Context Menu will be Diabeled</p>
+                </div>
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on input
+                <br><br>
+                <p>Enter Text :</p>
+                <input type="text" id="myinput" oninput="event_oninput()">
+                <p id="input1"></p>
+            </td>
+            <td>on invalid
+                <form method="get">
+                    Name: <input type="text" name="fname" required oninvalid="event_oninvalid()">
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on mousedown
+                <br><br>
+                <p id="p1" onmousedown="event_onmousedown()" onmouseup="event_onmouseup()">
+                    Click the text! The mouseDown() function is triggered when the mouse button is pressed down over
+                    this paragraph. The function sets the color of the text to red. The mouseUp() function is triggered
+                    when the mouse button is released. The mouseUp() function sets the color of the text to green.
+                </p>
+            </td>
+            <td>on cut
+                <br><br>
+                <input type="text" value="Try to cut this text!!" oncut="event_oncut()">
+                <p id="cut1"></p>
+            </td>
+            <td style="background-color: darkgrey; color: darkmagenta;">on paste
+                <br><br>
+                <input type="text" value="Try to paste this text!!" onpaste="event_onpaste()">
+                <p id="paste1"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>on toggle
+                <br><br>
+                <p>Open the details.</p>
+
+                <details ontoggle=event_ontoggle()>
+                    <summary>Details.</summary>
+                    <p> Hi my name is Dixit!!</p>
+                    <p>I am practicing HTML events for practice at the office.</p>
+                </details>
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+        function event_onclick() {
+            alert("onclick event is triggered");
+        }
+
+        function event_ondblclick() {
+            alert("ondblclick event is triggered")
+        }
+
+        function bigimg(x) {
+            x.style.height = "70px";
+            x.style.width = "70px";
+        }
+
+        function normalimg(x) {
+            x.style.height = "30px";
+            x.style.width = "30px";
+        }
+
+        function event_onkeypress() {
+            alert("You pressed a key")
+        }
+
+        function event_onblur(x) {
+            x.value = x.value.toUpperCase();
+        }
+
+        function event_onfocus(x) {
+            document.getElementById(x).style.color = "red";
+            document.getElementById(x).style.background = "cyan";
+        }
+
+        function event_onchange() {
+            let x = document.getElementById("myselect").value;
+            document.getElementById("demo").innerHTML = "You selected: " + x;
+        }
+
+        function event_onload() {
+            alert("Page is Loaded")
+        }
+
+        function event_onselect() {
+            alert("You have selected the text")
+        }
+
+        function event_onsubmit() {
+            alert("Your Response is Submitted")
+        }
+
+        function event_onwheel() {
+            document.getElementById("mydiv").style.fontSize = "20px";
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData("Text", event.target.id);
+        }
+
+        function dragging(event) {
+            document.getElementById("demo1").innerHTML = "The text is being dragged";
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            let data = event.dataTransfer.getData("Text");
+            event.target.appendChild(document.getElementById(data));
+            document.getElementById("demo1").innerHTML = "The text was dropped";
+        }
+
+        function event_onscroll() {
+            document.getElementById("myscroll").style.color = "red";
+        }
+
+        function event_oncopy() {
+            document.getElementById("practice").innerHTML = "You copied the text!"
+        }
+
+        function event_onerror() {
+            alert("The image can not be loaded")
+        }
+
+        function event_oncontextmenu() {
+            const div = document.getElementById("context1");
+            div.addEventListener("contextmenu", (e) => { e.preventDefault() });
+        }
+
+        function event_oninput() {
+            let text = document.getElementById("myinput").value;
+            document.getElementById("input1").innerHTML = "You wrote: " + text;
+        }
+
+        function event_oninvalid() {
+            alert("Name is Needed")
+        }
+
+        function event_onmousedown() {
+            document.getElementById("p1").style.color = "red";
+        }
+
+        function event_onmouseup() {
+            document.getElementById("p1").style.color = "green";
+        }
+        function event_oncut() {
+            document.getElementById("cut1").innerHTML = "You cut text!";
+        }
+        function event_onpaste() {
+            document.getElementById("paste1").innerHTML = "You pasted the text!";
+        }
+
+        function event_ontoggle() {
+            alert("the toggle event occured")
+        }
+
+        function event_onclickadd() {
+            // var table = document.getElementById("myTable");
+            // var row = table.insertRow();
+            // var cell1 = row.insertCell(0);
+            // var cell2 = row.insertCell(1);
+            // cell1.innerHTML = "NEW CELL1";
+            // cell2.innerHTML = "NEW CELL2";
+
+            var count = document.getElementById("myRow").cells.length;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow();
+            row.setAttribute("id", "myRow");
+
+            for (i = 0; i < count; i++) {
+                row.insertCell().innerHTML = "New Cell"
+            }
+        }
+
+        function event_onclickdel() {
+            var row = table.deleteRow(2);
+            var cell1 = row.deleteCell(0);
+            var cell2 = row.deleteCell(1);
+        }
+
+        function event_onclickaddnew() {
+            // var table = document.getElementById("myColumn");
+            // var column = table.insertColumn();
+            // var cell1 = column.insertCell(0);
+            // var cell2 = column.insertCell(1);
+            // var table = document.getElementById('myColumn'), // table reference
+            //     i;
+            // // open loop for each row and append cell
+            // for (i = 0; i < table.rows.length; i++) {
+            //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), i, 'col');
+            // }
+            const nodeList = document.querySelectorAll("#myRow");
+            for (let i = 0; i < nodeList.length; i++) {
+                var x = nodeList[i].insertCell();
+                x.innerHTML = "New Cell";
+            }
+        }
+
+        function event_onclickdelnew() {
+            // var table = document.getElementById("myColumn");
+            // var column = table.deleteColumn(2);
+            // var cell1 = column.deleteCell(0);
+            // var cell2 = column.deleteCell(1);
+            const nodeList = document.querySelectorAll("tr");
+            for (let i = 0; i < nodeList.length; i++) {
+                nodeList[i].lastChild.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>

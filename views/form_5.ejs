@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 5</title>
+
+    <style>
+        .radio {
+            margin-top: -20px;
+            margin-left: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cit {
+            margin-top: -60px;
+            margin-left: 550px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mydiv">
+        <form onsubmit="event_onsubmit()" action="#" method="post" autocomplete="on"></form>
+        <h1>Observation in HTML</h1>
+        <p>These are the observation which we have discussed in the lecture.</p>
+    </div>
+    <hr>
+    <h4>Basic Details</h4>
+    <label for="fname">First Name</label>
+    <input type="text" name="fname" id="fname" placeholder="Enter Your First Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="lname">Last Name</label>
+    <input type="text" name="lname" id="lname" placeholder="Enter Your Last Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="designation">Designation</label>
+    <input type="text" name="designation" id="designation" placeholder="Enter Your Job Role">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Address">Address</label>
+    <textarea name="Address" id="Address" cols="20" rows="2" placeholder="Enter Your Address"></textarea>
+    <br><br>
+    <label for="Phone Number">Phone Number</label>
+    <input type="text" name="Phone Number" id="Phone Number" placeholder="+91 xxxxxxxxxx">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <label for="Gender">Gender :</label>
+    <div class="radio">
+        <div>
+            <input type="radio" name="Gender" id="male">
+            <label for="male">Male</label>
+        </div>
+        <div>
+            <input type="radio" name="Gender" id="female">
+            <label for="female">Female</label>
+        </div>
+        <div>
+            <input type="radio" name="Gender" id="other">
+            <label for="other">Other</label>
+        </div>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="cit">
+        <label for="city">City :</label>
+        <select name="City" id="city">
+            <option disabled selected value> Select city name</option>
+            <optgroup label="Gujarat">
+                <option value="Ahmedabad">a-Ahmedabad</option>
+                <option value="Surat">s-Surat</option>
+                <option value="Rajkot">r-Rajkot</option>
+                <option value="Vadodara">v-Vadodara</option>
+            </optgroup>
+            <optgroup label="Maharastra">
+                <option value="Mumbai">m-Mumbai</option>
+                <option value="Pune">p-Pune</option>
+                <option value="Bandra">b-Bandra</option>
+            </optgroup>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="State">State :</label>
+        <select name="State" id="State">
+            <option disabled selected value> Select State name</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Maharastra">Maharastra</option>
+        </select>
+    </div>
+
+    <br><br>
+    <label for="birthday">Birthday :</label>
+    <input type="text" id="birthday" name="birthday" placeholder="DD-MM-YYYY">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="zip code">Zip Code :</label>
+    <input type="text" id="Zip Code" name="Zip Code" placeholder="Eg.- 380015">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Relationship Status">Relationship Status :</label>
+    <select name="Relationship Status" id="Relationship Status">
+        <option disabled selected value>Select Relationship Status</option>
+        <option value="Single">s-Single</option>
+        <option value="Married">m-Married</option>
+        <option value="Divorce">d-Divorce</option>
+        <option value="Widow">w-Widow</option>
+    </select>
+    <hr>
+    <h4>Education Details</h4>
+    <h5>SSC Result</h5>
+    <label for="Name of Board">Name of Board :</label>
+    <input type="text" name="Name of Board" id="Name of Board" placeholder="Board Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Passing Year">Passing Year :</label>
+    <input type="text" id="Passing Year" name="Passing Year" placeholder="Passing Year">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Percentage">Percentage :</label>
+    <input type="text" name="Percentage" id="Percentage" placeholder="Percentage">
+    <h5>HSC/Diploma Result</h5>
+    <label for="Name of Board">Name of Board :</label>
+    <input type="text" id="Name of Board" name="Name of Board" placeholder="Board Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Passing Year">Passing Year :</label>
+    <input type="text" id="Passing Year" name="Passing Year" placeholder="Passing Year">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Percentage">Percentage :</label>
+    <input type="text" name="Percentage" id="Percentage" placeholder="Percentage">
+    <h5>Bachelor Degree</h5>
+    <label for="Course Name">Course Name :</label>
+    <input type="text" id="Course Name" name="Course Name" placeholder="Couese Name">
+    &nbsp;&nbsp;
+    <label for="University">University :</label>
+    <input type="text" id="University" name="University" placeholder="University">
+    &nbsp;&nbsp;
+    <label for="Passing Year">Passing Year :</label>
+    <input type="text" id="Passing Year" name="Passing Year" placeholder="Passing Year">
+    &nbsp;&nbsp;
+    <label for="Percentage">Percentage :</label>
+    <input type="text" name="Percentage" id="Percentage" placeholder="Percentage">
+    <h5>Master Degree</h5>
+    <label for="Course Name">Course Name :</label>
+    <input type="text" id="Course Name" name="Course Name" placeholder="Couese Name">
+    &nbsp;&nbsp;
+    <label for="University">University :</label>
+    <input type="text" id="University" name="University" placeholder="University">
+    &nbsp;&nbsp;
+    <label for="Passing Year">Passing Year :</label>
+    <input type="text" id="Passing Year" name="Passing Year" placeholder="Passing Year">
+    &nbsp;&nbsp;
+    <label for="Percentage">Percentage :</label>
+    <input type="text" name="Percentage" id="Percentage" placeholder="Percentage">
+    <hr>
+
+    <h4>Work Experience</h4>
+    <label for="Company Name">Company Name :</label>
+    <input type="text" name="Company Name" id="Company Name" placeholder="Company name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Designation">Designation :</label>
+    <input type="text" name="Designation" id="Designation" placeholder="Designation">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Joining Date">Joining Date:</label>
+    <input type="date" id="Joining Date" name="Joining Date" placeholder="DD-MM-YYYY">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Ending Date">Ending Date:</label>
+    <input type="date" id="Ending Date" name="Ending Date" placeholder="DD-MM-YYYY"><br><br>
+    <label for="Company Name">Company Name :</label>
+    <input type="text" name="Company Name" id="Company Name" placeholder="Company name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Designation">Designation :</label>
+    <input type="text" name="Designation" id="Designation" placeholder="Designation">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Joining Date">Joining Date:</label>
+    <input type="date" id="Joining Date" name="Joining Date" placeholder="DD-MM-YYYY">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Ending Date">Ending Date:</label>
+    <input type="date" id="Ending Date" name="Ending Date" placeholder="DD-MM-YYYY"><br><br>
+    <label for="Company Name">Company Name :</label>
+    <input type="text" name="Company Name" id="Company Name" placeholder="Company name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Designation">Designation :</label>
+    <input type="text" name="Designation" id="Designation" placeholder="Designation">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Joining Date">Joining Date:</label>
+    <input type="date" id="Joining Date" name="Joining Date" placeholder="DD-MM-YYYY">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Ending Date">Ending Date:</label>
+    <input type="date" id="Ending Date" name="Ending Date" placeholder="DD-MM-YYYY"><br>
+
+    <hr>
+
+    <h4>Language Known</h4>
+    <input type="checkbox" id="Language1 Hindi" name="Language1 Hindi" value="Hindi">
+    <label for="Language1 Hindi"><b>Hindi</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Can Speak Hindi" name="Language" value="Can Speak">
+    <label for="Can Speak Hindi">Speak</label>
+    <input type="checkbox" id="Can Read Hindi" name="Language" value="Can Read">
+    <label for="Can Read Hindi">Read</label>
+    <input type="checkbox" id="Can Write Hindi" name="Language" value="Can Write">
+    <label for="Can Write Hindi">Write</label><br><br>
+    <input type="checkbox" id="Language2 English" name="Language2 English" value="English">
+    <label for="Language2 English"><b>English</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Can Speak English" name="Language" value="Can Speak">
+    <label for="Can Speak English">Speak</label>
+    <input type="checkbox" id="Can Read English" name="Language" value="Can Read">
+    <label for="Can Read English">Read</label>
+    <input type="checkbox" id="Can Write English" name="Language" value="Can Write">
+    <label for="Can Write English">Write</label><br><br>
+    <input type="checkbox" id="Language3 Gujarati" name="Language3 Gujarati" value="Gujarati">
+    <label for="Language3 Gujarati"><b>Gujarati</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Can Speak Gujarati" name="Language" value="Can Speak">
+    <label for="Can Speak Gujarati">Speak</label>
+    <input type="checkbox" id="Can Read Gujarati" name="Language" value="Can Read">
+    <label for="Can Read Gujarati">Read</label>
+    <input type="checkbox" id="Can Write Gujarati" name="Language" value="Can Write">
+    <label for="Can Write Gujarati">Write</label>
+
+    <hr>
+
+    <h4>Technology Known</h4>
+    </legend>
+    <input type="checkbox" id="Technology1 PHP" name="Technology1 PHP" value="PHP">
+    <label for="Technology1 PHP"><b>PHP</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Beginner PHP" name="Beginner" value="Beginner">
+    <label for="Beginner PHP">Beginner</label>
+    <input type="checkbox" id="Intermediate PHP" name="Intermediate" value="Intermediate">
+    <label for="Intermediate PHP">Intermediate</label>
+    <input type="checkbox" id="Expert PHP" name="Expert" value="Expert">
+    <label for="Expert PHP">Expert</label><br><br>
+    <input type="checkbox" id="Technology2 MYSQL" name="Technology2 MYSQL" value="MYSQL">
+    <label for="Technology2 MYSQL"><b>MYSQL</b>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Beginner MYSQL" name="Beginner" value="Beginner">
+    <label for="Beginner MYSQL">Beginner</label>
+    <input type="checkbox" id="Intermediate MYSQL" name="Intermediate" value="Intermediate">
+    <label for="Intermediate MYSQL">Intermediate</label>
+    <input type="checkbox" id="Expert MYSQL" name="Expert" value="Expert">
+    <label for="Expert MYSQL">Expert</label><br><br>
+    <input type="checkbox" id="Technology3 Python" name="Technology3 Python" value="Python">
+    <label for="Technology3 Python"><b>Python</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Beginner Python" name="Beginner" value="Beginner">
+    <label for="Beginner Python">Beginner</label>
+    <input type="checkbox" id="Intermediate Python" name="Intermediate" value="Intermediate">
+    <label for="Intermediate Python">Intermediate</label>
+    <input type="checkbox" id="Expert Python" name="Expert" value="Expert">
+    <label for="Expert Python">Expert</label><br><br>
+    <input type="checkbox" id="Technology4 Laravel" name="Technology4 Laravel" value="Laravel">
+    <label for="Technology4 Laravel"><b>Laravel</b>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    <input type="checkbox" id="Beginner Laravel" name="Beginner" value="Beginner">
+    <label for="Beginner Laravel">Beginner</label>
+    <input type="checkbox" id="Intermediate Laravel" name="Intermediate" value="Intermediate">
+    <label for="Intermediate Laravel">Intermediate</label>
+    <input type="checkbox" id="Expert Laravel" name="Expert" value="Expert">
+    <label for="Expert Laravel">Expert</label><br>
+
+    <hr>
+
+    <h4>Reference Contact</h4>
+    <label for="rname">Reference Name :</label>
+    <input type="text" id="rname" name="rname" placeholder="Enter Reference Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Contact">Contact Number :</label>
+    <input type="text" id="Contact" name="Contact" placeholder="Enter Reference Contact">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Relation">Relation :</label>
+    <input type="text" id="Relation" name="Relation" placeholder="Enter Reference Relation"><br><br>
+    <label for="rname">Reference Name :</label>
+    <input type="text" id="rname" name="rname" placeholder="Enter Reference Name">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Contact">Contact Number :</label>
+    <input type="text" id="Contact" name="Contact" placeholder="Enter Reference Contact">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Relation">Relation :</label>
+    <input type="text" id="Relation" name="Relation" placeholder="Enter Reference Relation">
+
+    <hr>
+
+    <h4>Preferences</h4>
+    <label for="Prefered Location">Prefered Location :</label>
+    <select name="Prefered Location" id="Prefered Location">
+        <option disabled selected value> Select Prefered Location</option>
+        <option value="Ahmedabad">a-Ahmedabad</option>
+        <option value="Surat">s-Surat</option>
+        <option value="Vadodara">v-Vadodara</option>
+        <option value="Mumbai">m-Mumbai</option>
+        <option value="Pune">p-Pune</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Department">Department :</label>
+    <select name="Department" id="Department">
+        <option disabled selected value> Select Department</option>
+        <option value="R&D">R&D</option>
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="HR">HR</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Notice Period">Notice Period :</label>
+    <input type="text" id="Notice Period" name="Notice Period" placeholder="In Months">
+    <br><br>
+    <label for="Current Salary">Current Salary in LPA :</label>
+    <input type="text" id="Current Salary" name="Current Salary" placeholder="Current Salary">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="Expected Salary">Expected Salary in LPA :</label>
+    <input type="text" id="Expected Salary" name="Expected Salary" placeholder="Expected Salary">
+    <hr>
+    <input type="reset" value="Reset" style="margin-left: 45%;">
+    <input type="submit" value="Submit">
+
+
+    <script>
+        function event_onclick() {
+            alert("onclick event is triggered");
+        }
+
+        function event_ondblclick() {
+            alert("ondblclick event is triggered")
+        }
+
+        function bigimg(x) {
+            x.style.height = "70px";
+            x.style.width = "70px";
+        }
+
+        function normalimg(x) {
+            x.style.height = "30px";
+            x.style.width = "30px";
+        }
+
+        function event_onkeypress() {
+            alert("You pressed a key")
+        }
+
+        function event_onblur(x) {
+            x.value = x.value.toUpperCase();
+        }
+
+        function event_onfocus(x) {
+            document.getElementById(x).style.color = "red";
+            document.getElementById(x).style.background = "cyan";
+        }
+
+        function event_onchange() {
+            let x = document.getElementById("myselect").value;
+            document.getElementById("demo").innerHTML = "You selected: " + x;
+        }
+
+        function event_onload() {
+            alert("Page is Loaded")
+        }
+
+        function event_onselect() {
+            alert("You have selected the text")
+        }
+
+        function event_onsubmit() {
+            alert("Your Response is Submitted")
+        }
+
+        function event_onwheel() {
+            document.getElementById("mydiv").style.fontSize = "20px";
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData("Text", event.target.id);
+        }
+
+        function dragging(event) {
+            document.getElementById("demo1").innerHTML = "The text is being dragged";
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            let data = event.dataTransfer.getData("Text");
+            event.target.appendChild(document.getElementById(data));
+            document.getElementById("demo1").innerHTML = "The text was dropped";
+        }
+
+        function event_onscroll() {
+            document.getElementById("myscroll").style.color = "red";
+        }
+
+        function event_oncopy() {
+            document.getElementById("practice").innerHTML = "You copied the text!"
+        }
+
+        function event_onerror() {
+            alert("The image can not be loaded")
+        }
+
+        function event_oncontextmenu() {
+            const div = document.getElementById("context1");
+            div.addEventListener("contextmenu", (e) => { e.preventDefault() });
+        }
+
+        function event_oninput() {
+            let text = document.getElementById("myinput").value;
+            document.getElementById("input1").innerHTML = "You wrote: " + text;
+        }
+
+        function event_oninvalid() {
+            alert("Name is Needed")
+        }
+
+        function event_onmousedown() {
+            document.getElementById("p1").style.color = "red";
+        }
+
+        function event_onmouseup() {
+            document.getElementById("p1").style.color = "green";
+        }
+        function event_oncut() {
+            document.getElementById("cut1").innerHTML = "You cut text!";
+        }
+        function event_onpaste() {
+            document.getElementById("paste1").innerHTML = "You pasted the text!";
+        }
+
+        function event_ontoggle() {
+            alert("the toggle event occured")
+        }
+
+        function event_onclickadd() {
+            // var table = document.getElementById("myTable");
+            // var row = table.insertRow();
+            // var cell1 = row.insertCell(0);
+            // var cell2 = row.insertCell(1);
+            // cell1.innerHTML = "NEW CELL1";
+            // cell2.innerHTML = "NEW CELL2";
+
+            var count = document.getElementById("myRow").cells.length;
+            var table = document.getElementById("myTable");
+            var row = table.insertRow();
+            row.setAttribute("id", "myRow");
+
+            for (i = 0; i < count; i++) {
+                row.insertCell().innerHTML = "New Cell"
+            }
+        }
+
+        function event_onclickdel() {
+            var row = table.deleteRow(2);
+            var cell1 = row.deleteCell(0);
+            var cell2 = row.deleteCell(1);
+        }
+
+        function event_onclickaddnew() {
+            // var table = document.getElementById("myColumn");
+            // var column = table.insertColumn();
+            // var cell1 = column.insertCell(0);
+            // var cell2 = column.insertCell(1);
+            // var table = document.getElementById('myColumn'), // table reference
+            //     i;
+            // // open loop for each row and append cell
+            // for (i = 0; i < table.rows.length; i++) {
+            //     createCell(table.rows[i].insertCell(table.rows[i].cells.length), i, 'col');
+            // }
+            const nodeList = document.querySelectorAll("#myRow");
+            for (let i = 0; i < nodeList.length; i++) {
+                var x = nodeList[i].insertCell();
+                x.innerHTML = "New Cell";
+            }
+        }
+
+        function event_onclickdelnew() {
+            // var table = document.getElementById("myColumn");
+            // var column = table.deleteColumn(2);
+            // var cell1 = column.deleteCell(0);
+            // var cell2 = column.deleteCell(1);
+            const nodeList = document.querySelectorAll("tr");
+            for (let i = 0; i < nodeList.length; i++) {
+                nodeList[i].lastChild.remove();
+            }
+        }
+    </script>
+
+</html>
+</body>
