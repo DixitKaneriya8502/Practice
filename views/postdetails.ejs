@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Post Details</h1>
+    <div id="postDetails">
+
+    </div>
+
+    <button id="comment">Show Comments</button>
+    <div id="commentSection" style="display: none;">
+        <h2>Comments</h2>
+        <ul id="commentList">
+
+        </ul>
+    </div>
+
+    <script>
+        const postId = window.location.pathname.split('/').pop();
+        fetch(`/postdetailroute/${postId}`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('postDetails').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error Occured!!', error);
+        });
+
+        document.getElementById('comment').addEventListener('click', ()=> {
+            fetch(`/postcommentsroute/${postId}`)
+            .then(response => response.json())
+            .then(comments => {
+                const commentList = document.getElementById("commentList");
+                commentList.innerHTML = '';
+                comments.forEach(comment => {
+                    const li = document.createElement('li');
+                    li.textContent = comment.body;
+                    commentList.appendChild(li);
+                });
+                document.getElementById('commentSection').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error while fetching comments', error);
+            });
+        })
+        
+    </script>
+</body>
+</html>

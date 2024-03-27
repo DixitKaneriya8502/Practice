@@ -110,6 +110,16 @@ app.get("/posts", (req, res) => {
 
 })
 
+app.get("/pagination", (req, res) => {
+    res.render("indexnew")
+})
+
+app.get("/pagination/:id", (req, res) => {
+    if (true) {
+    res.render('postdetails', {id : req.params.id})
+}
+})
+
 app.get('/kuku', (req, res) => {
     res.render("cube_game")
 })
