@@ -385,7 +385,68 @@ app.get('/more/:studentid', async (req, res) => {
     res.render('more', {data: result, total: totalrecords});
 });
 
+app.get('/newhtml/:page', async (req,res) => {
 
+    
+    let page =req.params.page||  1;
+    
+    console.log(page);
+    if(page>4 || page<1){
+        res.end('page not found')
+    }
+    
+    let recordperpage = 50;
+    let totalrecords = 200;
+    page = Number(page);
+    console.log(page);
+    let start = page * recordperpage - recordperpage;
+
+    // console.log(start);
+    
+    let field = req.query.orderby || 'id'
+    let orderdir = req.query.orderdir || 'asc'
+    let month = req.query.month || '12';
+    let who = 'newhtml';
+    let query = `select students.id, students.firstName, students.lastName, count(attendance1.statuss) as att , (count(attendance1.statuss)/(select count(distinct dates) from attendance1 where Month(dates) = '1'))*100 as pr from students join attendance1 where students.id = attendance1.id and attendance1.statuss = 'P' and Month(attendance1.dates) = ${month} group by students.id, students.firstName order by ${field} ${orderdir} limit ${recordperpage} offset ${start} ;`
+
+    // let pquery = util.promisify(db.query).bind(db);
+    // let result = await pquery(query);
+    var [result] = await db.query(query)
+    // console.log(result);
+
+    res.render('newhtml', {data: result,start:start, pageno: page, total: totalrecords, month: month, who: who});
+
+});
+
+// app.post('/search', async(req,res) => {
+//     try {
+//         let id = req.body.id || "1";
+//         let page = req.params.pageno || "1";
+//         if(page>4 || page<1){
+//         res.end('page not found')
+//     }
+    
+//     let recordperpage = 50;
+//     let totalrecords = 200;
+//     let start = page * recordperpage - recordperpage;
+//     page = Number(page);
+//     let month = req.query.month || '12';
+//     let who = 'filter';
+//     let query = `select students.id, students.firstName, students.lastName, count(attendance1.statuss) as att , (count(attendance1.statuss)/(select count(distinct dates) from attendance1 where Month(dates) = '1'))*100 as pr from students join attendance1 where students.id = attendance1.id and attendance1.statuss = 'P' and students.id = ${id} and Month(attendance1.dates) = ${month} group by students.id limit ${recordperpage} offset ${start} ;`;
+ 
+
+//     // console.log("hii");
+//     // db.query(query, (error, result) => {
+//     //     if(error) throw error;
+//     var [result] = await db.query(query);
+//         res.render('newhtml', {data: result, pageno: page, total: totalrecords, month: month, who: who});
+//     // })
+//     }
+//     catch (error) {
+//         res.write("Try Once more")
+//         return res.end()
+//     }
+// })
 
 
 

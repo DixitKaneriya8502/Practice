@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heading {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        table, th, td {
+            max-width: 1200px;
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+
+            th {
+                background-color: rgb(201, 179, 13);
+            }
+
+            tr {
+                background-color: white;
+            }
+        }
+
+        .bdy {
+            margin-left: 24%;
+        }
+
+        body {
+            background-color: rgb(164, 255, 247);
+        }
+
+        #months {
+            margin-left: 42%;
+        }
+
+        .pagination {
+            margin-left: 41%;
+        }
+    </style>
+</head>
+<body>
+    <div class="half">
+            <h1 class="heading">Dixit Kaneriya,  24DEV099,  27/02/2024</h1>
+            <h2 class="heading">Attendance Sheet"</h2>
+            <%- include('./filter.ejs'); %>
+            <hr>
+
+            <br><br>
+
+            <select id="months" onchange="selectmonth(value)">
+                <option value="12">December 2023</option>
+                <option value="1">January 2024</option>
+                <option value="2">February 2024</option>
+            </select>
+            <br><br>
+
+            <div class="pagination">
+                <% if(pageno==1) {%>
+                    <button disabled>
+                        <<
+                    </button>
+                    <button disabled>
+                        <
+                    </button>
+                    <%} else { %>
+                        <a href="/newhtml/1?month=<%=month %>"><button><<</button></a>
+                        <a href="/newhtml/<%=pageno-1%>?month=<%= month %>"><button><</button></a>
+                        <% }%>
+
+                        <button>
+                            <%=pageno%>
+                        </button>
+
+                        <% if(pageno==4){ %>
+                            <button disabled> > </button>
+                            <button disabled> >> </button>
+                            <%} else {%>
+                                <a href="/newhtml/<%=pageno+1%>?month=<%= month %>"><button>></button></a>
+                                <a href="/newhtml/4?month=<%= month %>"><button>>></button></a>
+                                <%}%>
+            </div>
+            
+        </div>
+            <br><br>
+            <div class="bdy">
+            <table>
+                <tr>
+                    <th onclick="change(event)" style="width: 140px;">id</th>
+                    <th onclick="change(event)" style="width: 140px;">firstName</th>
+                    <th onclick="change(event)" style="width: 140px;">lastName</th>
+                    <th onclick="change(event)" style="width: 140px;">att</th>
+                    <th onclick="change(event)" style="width: 140px;">pr</th>
+                <% for(var i=0; i<data.length; i++) {%>
+                    <tr>
+                        <td>
+                            <%=data[i].id%>
+                        </td>
+                        <td>
+                            <%=data[i].firstName%>
+                        </td>
+                        <td>
+                            <%=data[i].lastName%>
+                        </td>
+                        <td>
+                            <%=data[i].att%>
+                        </td>
+                        <td>
+                            <%=data[i].pr%>
+                        </td>
+                    </tr>
+                </tr>
+                <% } %>
+            </table>
+    </div>
+
+    <script>
+        function selectmonth(value) {
+            window.location.href='/newhtml/1?month='+value
+        }
+        const mon=document.querySelector("#months")
+        mon.value=`<%=month%>`;
+
+        const change = (event) => {
+            console.log(event.target.innerText.split(' '));
+            field = event.target.innerText.split(' ')[0]
+            url = window.location.href;
+            if(url.includes('asc')){
+                window.location.href='/<%=who%>/<%=pageno%>?orderby=' + field + '&orderdir=desc';
+            }
+            else {
+                window.location.href='/<%=who%>/<%=pageno%>?orderby=' + field + '&orderdir=asc';
+            }
+        }
+
+        const filter = () => {
+            let show = document.getElementById("filters");
+            if(show.style.display === "none") {
+                show.style.display = ""
+            }
+            else {
+                show.style.display = "none"
+            }
+        }
+    </script>
+</body>
+</html>
