@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <script src="jobapplicationform.js"></script>
+</head>
+
+<body>
+    <h1>Employee Job Application</h1>
+
+    <form name="job_application" method="post" action="/formvalidate" onsubmit="return validateForm()">
+        <fieldset>
+            <legend><b>Basic Details</b></legend>
+            <label for="fname">First Name :</label>
+            <input type="text" name="fname" >
+            <span id="alertfname" style="display: none; color: red;">First Name is </span>
+            <br><br>
+            <label for="lname">Last name :</label>
+            <input type="text" name="lname" >
+            <span id="alertlname" style="display: none; color: red;">Last Name is </span>
+            <br><br>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" >
+            <span id="alertemail" style="display: none; color: red;">Email is </span>
+            <br><br>
+            <label for="Address1">Address1 :</label>
+            <input type="text" id="Address1" name="address1" >
+            <span id="alertadd1" style="display: none; color: red;">Address is </span>
+            <br><br>
+            <label for="Address2">Address2 :</label>
+            <input type="text" id="Address2" name="address2" >
+            <br>
+            <p>Gender :
+                <input type="radio" name="gender" id="male" value="Male" >
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="Female" >
+                <label for="female">Female</label>
+                <span id="alertgender" style="display: none; color: red;">Gender is </span>
+                <br><br>
+                <label for="city">City :</label>
+                <select name="city" id="city">
+                    <option value="select_city" value="selectCity" > Select city name</option>
+                    <option value="Ahmedabad" id="Ahmedabad" >Ahmedabad</option>
+                    <option value="Surat" id="Surat" >Surat</option>
+                    <option value="Rajkot" id="Rajkot" >Rajkot</option>
+                    <option value="Vadodara" id="Vadodara" >Vadodara</option>
+                    <option value="Mumbai" id="Mumbai" >Mumbai</option>
+                    <option value="Pune" id="Pune" >Pune</option>
+                    <option value="Bandra" id="Bandra" >Bandra</option>
+                    <span id="alertcity" style="display: none; color: red;">City is </span>
+                </select>
+
+                <br><br>
+                <label for="State">State :</label>
+                <select name="state" id="state">
+                    <option value="selectState" > Select State name</option>
+                    <option value="Gujarat" >Gujarat</option>
+                    <option value="Maharastra" >Maharastra</option>
+                </select><br><br>
+                <label for="birthday">Birthday :</label>
+                <input type="date" id="bday" name="bday" >
+                <span id="alertbday" style="display: none; color: red;">Birthdate is </span>
+                <br><br>
+                <label for="zip code">Zip Code :</label>
+                <input type="text" id="Zip Code" name="zipcode" >
+                <span id="alertzip" style="display: none; color: red;">Zip Code </span>
+                <br><br>
+                <label for="Relationship Status">Relationship Status :</label>
+                <select name="rstatus" id="rstatus">
+                    <option value="status" >Select Relationship Status</option>
+                    <option value="Single" >Single</option>
+                    <option value="Married" >Married</option>
+                </select>
+                <input type="submit" value="Submit">
+                <!-- <input type="button" value="Update" id="update"> -->
+        <!-- </fieldset>
+    </form>
+
+    <br>
+
+    <form method="post" name="application" action="/form" onsubmit="return validate()"> -->
+
+        <fieldset>
+            
+            <legend><b>Education Details</b></legend>
+            <h5>SSC Result</h5>
+            <label for="Name of Board">Name of Board :</label>
+            <input type="text" id="Name of Board" name="board[]" >
+            <span id="alertboardssc" style="display: none; color: red;">Board name </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]" >
+            <span id="alertyear1" style="display: none; color: red;">Passing year </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage" >
+            <span id="alertpercent" style="display: none; color: red;">Percentage </span>
+            <hr>
+            <h5>HSC/Diploma Result</h5>
+            <label for="Name of Board">Name of Board :</label>
+            <input type="text" id="Name of Board" name="board[]" >
+            <span id="alertboardhsc" style="display: none; color: red;">Board name </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]" >
+            <span id="alertyearnew" style="display: none; color: red;">Passing year </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage" >
+            <span id="alertpercentnew" style="display: none; color: red;">Percentage </span>
+            <hr>
+
+            <h5>Bachelor Degree</h5>
+            <label for="Course Name">Course Name :</label>
+            <input type="text" id="Course Name" name="board[]" >
+            <span id="alertcourse" style="display: none; color: red;">Course Required</span>
+            <!-- &nbsp;&nbsp;
+            <label for="University">University :</label>
+            <input type="text" id="University" name="university">
+            <span id="alertuni" style="display: none; color: red;">University Required</span> -->
+            &nbsp;&nbsp;
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]">
+            <span id="alertpass" style="display: none; color: red;">Passing Year Required</span>
+            &nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage">
+            <span id="alertperbh" style="display: none; color: red;">Percentage Required</span>
+
+            <hr>
+
+            <h5>Master Degree</h5>
+            <label for="Course Name">Course Name :</label>
+            <input type="text" id="Course Name" name="board[]" >
+            <span id="alertcoursemaster" style="display: none; color: red;">Course name required</span>
+            &nbsp;&nbsp;
+            <!-- <label for="University">University :</label>
+            <input type="text" id="University" name="universityms">
+            <span id="alertunims" style="display: none; color: red;">University Required</span>
+            &nbsp;&nbsp; -->
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]">
+            <span id="alertpass3" style="display: none; color: red;">Passing Year Required</span>
+            &nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage">
+            <span id="alertperms" style="display: none; color: red;">Percentage Required</span>
+        </fieldset>
+
+        <br>
+    </form>
+
+    <!-- <form method="post" name="application3" action="/" onsubmit="return validate3()">
+
+        <fieldset>
+            <legend><b>Work Experience</b></legend>
+            <label for="Company Name">Company Name :</label>
+            <input type="text" name="CompanyName" id="Company Name">
+            <span id="alertcomp" style="display: none; color: red;">Company Required</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Designation">Designation :</label>
+            <input type="text" name="designation" id="Designation">
+            <span id="alertdesignation" style="display: none; color: red;">Designation Required</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Joining Date">Joining Date:</label>
+            <input type="date" id="Joining Date" name="joiningDate">
+            <span id="alertjoindate" style="display: none; color: red;">Joining Date Required</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Ending Date">Ending Date:</label>
+            <input type="date" id="Ending Date" name="endingDate">
+            <span id="alertenddate" style="display: none; color: red;">Ending Date Required</span>
+            <br><br>
+            <label for="Company Name">Company Name :</label>
+            <input type="text" name="Company Name" id="Company Name">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Designation">Designation :</label>
+            <input type="text" name="Designation" id="Designation">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Joining Date">Joining Date:</label>
+            <input type="date" id="Joining Date" name="Joining Date">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Ending Date">Ending Date:</label>
+            <input type="date" id="Ending Date" name="Ending Date"><br><br>
+            <label for="Company Name">Company Name :</label>
+            <input type="text" name="Company Name" id="Company Name">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Designation">Designation :</label>
+            <input type="text" name="Designation" id="Designation">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Joining Date">Joining Date:</label>
+            <input type="date" id="Joining Date" name="Joining Date">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Ending Date">Ending Date:</label>
+            <input type="date" id="Ending Date" name="Ending Date"><br>
+
+            
+        </fieldset>
+
+        <br>
+    </form> -->
+
+    <!-- <div style="display: flex;">
+
+        <form method="post" name="application4" action="/" onsubmit="return validate4()">
+
+            <fieldset>
+                <span id="alertbox" style="display: none; color: red;">Please select language known</span>
+                <span id="alertskill" style="display: none; color: red;">Please select skills</span>
+                <legend><b>Language Known</b></legend>
+                <input type="checkbox" id="languagehindi" name="languagehindi" value="Hindi">
+                <label
+                    for="languagehindi"><b>Hindi</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="checkbox" id="skillhs" name="skillhs" value="Speak">
+                <label for="skillhs">Speak</label>
+                <input type="checkbox" id="skillhr" name="skillhr" value="Read">
+                <label for="skillhr">Read</label>
+                <input type="checkbox" id="skillhw" name="skillhw" value="Write">
+                <label for="skillhw">Write</label><br><br>
+                <input type="checkbox" id="languageenglish" name="languageenglish" value="English">
+                <label for="languageenglish"><b>English</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="checkbox" id="skilles" name="skilles" value="Speak">
+                <label for="skilles">Speak</label>
+                <input type="checkbox" id="skiller" name="skiller" value="Read">
+                <label for="skiller">Read</label>
+                <input type="checkbox" id="skillew" name="skillew" value="Write">
+                <label for="skillew">Write</label><br><br>
+
+                <input type="checkbox" id="languagegujarati" name="languagegujarati" value="Gujarati">
+                <label for="languagegujarati"><b>Gujarati</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="checkbox" id="skillgs" name="skillgs" value="Can Speak">
+                <label for="skillgs">Speak</label>
+                <input type="checkbox" id="skillgr" name="skillgr" value="Can Read">
+                <label for="skillgr">Read</label>
+                <input type="checkbox" id="skillgw" name="skillgw" value="Can Write">
+                <label for="skillgw">Write</label>
+
+                
+            </fieldset>
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <fieldset>
+            <legend><b>Technology Known</b></legend>
+            <input type="checkbox" id="Technology1 PHP" name="Technology1 PHP" value="PHP">
+            <label for="Technology1 PHP"><b>PHP</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="checkbox" id="Beginner" name="Beginner" value="Beginner">
+            <label for="Beginner">Beginner</label>
+            <input type="checkbox" id="Intermediate" name="Intermediate" value="Intermediate">
+            <label for="Intermediate">Intermediate</label>
+            <input type="checkbox" id="Expert" name="Expert" value="Expert">
+            <label for="Expert">Expert</label><br><br>
+            <input type="checkbox" id="Technology2 MYSQL" name="Technology2 MYSQL" value="PHP">
+            <label for="Technology2 MYSQL"><b>MYSQL</b>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="checkbox" id="Beginner" name="Beginner" value="Beginner">
+            <label for="Beginner">Beginner</label>
+            <input type="checkbox" id="Intermediate" name="Intermediate" value="Intermediate">
+            <label for="Intermediate">Intermediate</label>
+            <input type="checkbox" id="Expert" name="Expert" value="Expert">
+            <label for="Expert">Expert</label><br><br>
+            <input type="checkbox" id="Technology3 Python" name="Technology3 Python" value="Python">
+            <label for="Technology3 Python"><b>Python</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="checkbox" id="Beginner" name="Beginner" value="Beginner">
+            <label for="Beginner">Beginner</label>
+            <input type="checkbox" id="Intermediate" name="Intermediate" value="Intermediate">
+            <label for="Intermediate">Intermediate</label>
+            <input type="checkbox" id="Expert" name="Expert" value="Expert">
+            <label for="Expert">Expert</label><br><br>
+            <input type="checkbox" id="Technology4 Laravel" name="Technology4 Laravel" value="Laravel">
+            <label for="Technology4 Laravel"><b>Laravel</b>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="checkbox" id="Beginner" name="Beginner" value="Beginner">
+            <label for="Beginner">Beginner</label>
+            <input type="checkbox" id="Intermediate" name="Intermediate" value="Intermediate">
+            <label for="Intermediate">Intermediate</label>
+            <input type="checkbox" id="Expert" name="Expert" value="Expert">
+            <label for="Expert">Expert</label><br>
+        </fieldset>
+    </div>
+
+    <br>
+
+    <fieldset>
+        <legend><b>Reference Contact</b></legend>
+        <label for="rname">Reference Name :</label>
+        <input type="text" id="rname" name="rname">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Contact">Contact Number :</label>
+        <input type="text" id="Contact" name="Contact">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Relation">Relation :</label>
+        <input type="text" id="Relation" name="Relation"><br><br>
+        <label for="rname">Reference Name :</label>
+        <input type="text" id="rname" name="rname">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Contact">Contact Number :</label>
+        <input type="text" id="Contact" name="Contact">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Relation">Relation :</label>
+        <input type="text" id="Relation" name="Relation">
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend><b>Preferences</b></legend>
+        <label for="Prefered Location">Prefered Location :</label>
+        <select name="Prefered Location" id="Prefered Location">
+            <option disabled selected value> Select Prefered Location</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Surat">Surat</option>
+            <option value="Vadodara">Vadodara</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Department">Department :</label>
+        <select name="Department" id="Department">
+            <option disabled selected value> Select Department</option>
+            <option value="R&D">R&D</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+            <option value="HR">HR</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Notice Period">Notice Period :</label>
+        <input type="text" id="Notice Period" name="Notice Period">
+        <br><br>
+        <label for="Current Salary">Current Salary in LPA :</label>
+        <input type="text" id="Current Salary" name="Current Salary">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="Expected Salary">Expected Salary in LPA :</label>
+        <input type="text" id="Expected Salary" name="Expected Salary">
+    </fieldset>
+    <br>
+    <input type="reset" value="Reset" style="margin-left: 45%;"> -->
+
+
+
+
+
+
+    <script>
+
+        const winreload = () => {
+            window.location.reload()
+        }
+
+        const enDisFields = (lang) => {
+            console.log(lang);
+            let subfields = document.querySelectorAll(`.sub-${lang}field`)
+            console.log('sub', subfields);
+            for (i=0; i<subfields.length; i++) {
+                if (subfields[i].disabled) {
+                    subfields[i].disabled = false;
+                }
+                else {
+                    subfields[i].checked = false;
+                    subfields[i].disabled = true;
+                }
+            }
+        }
+
+        function validateForm() {
+
+            let x = document.forms["job_application"]["fname"].value;
+            fnameregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (fnameregex.test(x) == false) {
+                document.getElementById("alertfname").style.display = "block";
+                return false;
+            }
+
+            let y = document.forms["job_application"]["lname"].value;
+            lnameregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (lnameregex.test(y) == false) {
+                document.getElementById("alertlname").style.display = "block";
+                return false;
+            }
+
+            let mail = document.forms["job_application"]["email"].value;
+            emailregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            if (emailregex.test(mail) == false) {
+                document.getElementById("alertemail").style.display = "block"
+                // alert("change")
+                return false;
+            }
+
+            let add1 = document.forms["job_application"]["Address1"].value;
+            add1regex = /^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$/
+            if (add1regex.test(add1) == false) {
+                document.getElementById("alertadd1").style.display = "block"
+                return false;
+            }
+
+            // let gend = document.forms["job_application"]["Gender"].value;
+            // genderregex = /?:m|M|male|Male|f|F|female|Female|FEMALE|MALE|Not prefer to say)$/;
+            if (document.getElementById("male").checked) {
+                document.getElementById("male").value;
+            }
+            else if (document.getElementById("female").checked) {
+                document.getElementById("female").value;
+            }
+            else {
+                document.getElementById("alertgender").style.display = "block";
+                return false;
+            }
+
+
+
+
+
+            // // if (document.getElementById("Ahmedabad").select) {
+            // //     document.getElementById("Ahmedabad").value;
+            // // }
+
+            // // else if (document.getElementById("Surat").select) {
+            // //     document.getElementById("Surat").value;
+            // // }
+
+            // // else if (document.getElementById("Rajkot").select) {
+            // //     document.getElementById("Rajkot").value;
+            // // }
+
+            // // else {
+            // //     document.getElementById("alertcity").style.display = "block";
+            // //     return false;
+            // // }
+
+            // // let citydrop = document.forms["job_application"]["City"].value;
+            // // if (citydrop=="") {
+            // //     document.getElementById(alertcity);
+            // //     return false;
+            // // }
+
+
+
+
+
+
+            let bday = document.forms["job_application"]["birthday"].value;
+            bdayregex = /[\/\-\.]/
+            if (bdayregex.test(bday) == false) {
+                document.getElementById("alertbday").style.display = "block"
+                return false;
+            }
+
+            let zipcode = document.forms["job_application"]["Zip Code"].value;
+            zipregex = /(^\d{6}$)|(^\d{4}-\d{8}$)/
+            if (zipregex.test(zipcode) == false) {
+                document.getElementById("alertzip").style.display = "block"
+                return false;
+            }
+        // }
+
+
+        // function validate() {
+
+            let boardssc = document.forms["job_application"]["board"].value;
+            boardregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (boardregex.test(boardssc) == false) {
+                document.getElementById('alertboardssc').style.display = "block";
+                return false;
+            }
+
+            let yearssc = document.forms["job_application"]["pyear"].value;
+            yearregex = /^\d{4}$/
+            if (yearregex.test(yearssc) == false) {
+                document.getElementById("alertyear1").style.display = "block"
+                return false;
+            }
+
+            let per = document.forms["job_application"]["percentage"].value;
+            percentregex = /^\d{2}$/
+            if (percentregex.test(per) == false) {
+                document.getElementById("alertpercent").style.display = "block"
+                return false;
+            }
+
+            let boardhsc = document.forms["job_application"]["board"].value;
+            boardregex2 = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (boardregex2.test(boardhsc) == false) {
+                document.getElementById("alertboardhsc").style.display = "block"
+                return false;
+            }
+
+            let yearnew = document.forms["job_application"]["pyear"].value;
+            yearregexnew = /^\d{4}$/
+            if (yearregexnew.test(yearnew) == false) {
+                document.getElementById("alertyearnew").style.display = "block"
+                return false;
+            }
+
+            let percentnew = document.forms["job_application"]["percentage"].value;
+            percentregexn = /^\d{2}$/
+            if (percentregexn.test(percentnew) == false) {
+                document.getElementById("alertpercentnew").style.display = "block"
+                return false;
+            }
+
+            let coursee = document.forms["job_application"]["CourseName"].value;
+            courseregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (courseregex.test(coursee) == false) {
+                document.getElementById("alertcourse").style.display = "block"
+                return false;
+            }
+
+            let uni = document.forms["job_application"]["university"].value;
+            uniregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (uniregex.test(uni) == false) {
+                document.getElementById("alertuni").style.display = "block"
+                return false;
+            }
+
+            let yearsecond = document.forms["job_application"]["PassingYear2"].value;
+            yearregex = /^\d{4}$/
+            if (yearregex.test(yearsecond) == false) {
+                document.getElementById("alertpass").style.display = "block"
+                return false;
+            }
+
+            let percentba = document.forms["job_application"]["percentagebh"].value;
+            percentregexnew = /^\d{2}$/
+            if (percentregexnew.test(percentba) == false) {
+                document.getElementById("alertperbh").style.display = "block"
+                return false;
+            }
+
+            let courseemaster = document.forms["job_application"]["CourseNamemaster"].value;
+            courseregexmaster = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (courseregexmaster.test(courseemaster) == false) {
+                document.getElementById("alertcoursemaster").style.display = "block"
+                return false;
+            }
+
+            let unimaster = document.forms["job_application"]["universityms"].value;
+            uniregexmaster = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (uniregexmaster.test(unimaster) == false) {
+                document.getElementById("alertunims").style.display = "block"
+                return false;
+            }
+
+            let yearms = document.forms["job_application"]["PassingYear3"].value;
+            yearregexms = /^\d{4}$/
+            if (yearregexms.test(yearms) == false) {
+                document.getElementById("alertpass3").style.display = "block"
+                return false;
+            }
+
+            let percentms = document.forms["job_application"]["percentagems"].value;
+            percentregexms = /^\d{2}$/
+            if (percentregexms.test(percentms) == false) {
+                document.getElementById("alertperms").style.display = "block"
+                return false;
+            }
+        }
+
+        function validate3() {
+
+            let comp = document.forms["application3"]["CompanyName"].value;
+            compregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (compregex.test(comp) == false) {
+                document.getElementById("alertcomp").style.display = "block"
+                return false;
+            }
+
+            let desig = document.forms["application3"]["designation"].value;
+            desigregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (desigregex.test(desig) == false) {
+                document.getElementById("alertdesignation").style.display = "block"
+                return false;
+            }
+
+            let joinday = document.forms["application3"]["joiningDate"].value;
+            joindayregex = /[\/\-\.]/
+            if (joindayregex.test(joinday) == false) {
+                document.getElementById("alertjoindate").style.display = "block"
+                return false;
+            }
+
+            let endday = document.forms["application3"]["endingDate"].value;
+            enddayregex = /[\/\-\.]/
+            if (enddayregex.test(endday) == false) {
+                document.getElementById("alertenddate").style.display = "block"
+                return false;
+            }
+        }
+
+        function validate4() {
+            var checkboxesh = document.getElementsByName('languagehindi');
+            var isCheckedh = false;
+
+            for (var i = 0; i < checkboxesh.length; i++) {
+                if (checkboxesh[i].checked) {
+                    isCheckedh = true;
+
+                    var skillboxesh = document.getElementsByName('skillhs');
+                    var isSkillh = false;
+
+                    for (var j = 0; j < skillboxesh.length; j++) {
+                        if (skillboxesh[j].checked) {
+                            isSkillh = true;
+                            return;
+                        }
+
+                        if (isSkillh == false) {
+                            document.getElementById("alertskill").style.display = "block"
+                            return false;
+                        }
+                    }
+
+                    
+                    var skillboxesr = document.getElementsByName('skillhr');
+                    var isSkillr = false;
+
+                    for (var k = 0; k < skillboxesr.length; k++) {
+                        if (skillboxesr[k].checked) {
+                            isSkillr = true;
+                            return;
+                        }
+
+                        if (isSkillr == false) {
+                            document.getElementById("alertskill").style.display = "block"
+                            return false;
+                        }
+                    }
+
+                }
+
+                else if (isCheckedh == false) {
+                    // document.getElementById("alertbox").style.display = "block"
+                    if (isSkillh = true) {
+                        document.getElementById("alertbox").style.display = "block"
+                        return false;
+                    }
+                    if (isSkillh == false) {
+                        return true;
+                    }
+                }
+
+                else if (isCheckedh == false) {
+                    // document.getElementById("alertbox").style.display = "block"
+                    if (isSkillr = true) {
+                        document.getElementById("alertbox").style.display = "block"
+                        return false;
+                    }
+                    if (isSkillr == false) {
+                        return true;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+
+
+        // var checkboxese = document.getElementsByName('languageenglish');
+        // var isCheckede = false;
+
+        // for (var i = 0; i < checkboxese.length; i++) {
+        //     if (checkboxese[i].checked) {
+        //         isCheckede = true;
+        //         var skillboxese = document.getElementsByName('skilles');
+        //         var isSkille = false;
+
+        //         for (var j = 0; j < skillboxese.length; j++) {
+        //             if (skillboxese[j].checked) {
+        //                 isSkille = true;
+        //                 break;
+        //             }
+        //             if (isSkille == false) {
+        //                 document.getElementById("alertskill").style.display = "block"
+        //                 return false;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // if (isCheckede == false) {
+        //     document.getElementById("alertbox").style.display = "block"
+        //     return false;
+        // }
+
+        // return true;
+
+
+
+        let s_id = '';
+        const event = document.querySelectorAll('./event');
+        const next = document.querySelectorAll('./next');
+        const pre = document.querySelectorAll('./pre');
+
+        next.forEach(function (button, index) {
+            button.addEventListener('click', function() {
+                let object = {}
+                let 
+            })
+        })
+
+    </script>
+</body>
+
+</html>

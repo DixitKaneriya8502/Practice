@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Converting date to another timezone in JavaScript</title>
+</head>
+
+<body onload="load()">
+    <h3>Convert date to America/New_York Time Zone using toLocaleString() Method</h3>
+    <p id="input">Local Time: </p>
+    <hr>
+
+    <h2 style="text-align: center;">Time Converter</h2>
+    <table style="margin-left: 220px;">
+        <tr>
+            <th>
+                <label for="state">Local Time :</label>
+                <!-- <select name="state" id="input">
+                    <option value="local">LOCAL (PC)</option>
+                    <option value="usa">USA</option>
+                    <option value="india">INDIA</option>
+                    <option value="canada">CANADA</option>
+                </select> -->
+                <input type="text" name="displayTime" id="text1">
+            </th>
+
+            <th>
+
+                <select name="state" id="out">
+
+
+                </select>
+                <input type="text" name="displayTime" id="text2">
+            </th>
+        </tr>
+    </table>
+    <input type="button" value="submit" id="btn" style="margin-left: 520px;margin-top: 30px;">
+    <script>
+        // date objec
+        document.getElementById("btn").addEventListener("click", () => {
+
+
+            let date = new Date();
+            let time = date.toLocaleTimeString()
+            document.getElementById("input").innerText = date;
+            document.getElementById("text1").value = time;
+
+
+            // convert date to another timezone
+            //   let output = date.toLocaleString("en-US", {
+            //      timeZone: "America/New_York"
+            //   });
+
+            var outputnew = document.getElementById("out").value;
+            console.log(outputnew);
+
+
+            let output = date.toLocaleString("en-US", {
+                timeZone: outputnew
+
+            });
+            // let outputtime = output.toLocaleTimeString()
+
+
+
+            // display the result
+            document.getElementById("text2").value = output;
+
+            // document.getElementById("text2").value = output;
+        })
+
+        // let link = fetch("./city.json")
+
+
+        const load = async () => {
+            var city = await fetch("./city.json")
+            var data = await city.json()
+            console.log(data);
+            var citycumtri = Object.keys(data)
+            citycumtri.map((e) => {
+                document.getElementById("out").innerHTML += `<option value="${e}">${e}</option>`
+            }
+            )
+        }
+
+    </script>
+</body>
+
+</html>

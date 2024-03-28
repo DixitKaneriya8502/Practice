@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 1218px;
+        }
+
+        body {
+            background-color: rgb(164, 255, 247);
+        }
+
+        .tbl{
+            text-align: center;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 class="heading">Dixit Kaneriya,  24DEV099,  28/02/2024</h1>
+    <h2 class="heading">Result Sheet</h2>
+    <div class="tbl">
+            <table>
+                <tr>
+                    <th class="txt" colspan="2"></th>
+                    <th class="txt" colspan="2">Prilims</th>
+                    <th class="txt" colspan="2">Terminal</th>
+                    <th class="txt" colspan="2">Final</th>
+                </tr>
+                
+
+                <% for(let val of data) {%>
+                    <%const filednames=Object.keys(val);%>
+                    <tr>
+                        <% for(var i=0; i<filednames.length; i++){ %>
+                            <th>
+                                <%= filednames[i]%>
+                            </th>
+                            <%}%>
+                            <th>Report</th>
+                    </tr>
+                    <% break; %>
+                    <%}%>
+                        <% for(let key of data) {%>
+                            <%const filedValues=Object.values(key);%>
+                            <tr>
+                                <%for(var i=0; i<filedValues.length; i++) {%>
+                                    <td>
+                                        <%=filedValues[i]%>
+                                    </td>
+                                    <%}%>
+                                    <td><a href="/more/<%=filedValues[0]%>" target="_blank" style="text-decoration: none; color: rgb(255, 0, 0);">View Data</a></td>
+                            </tr>
+                            <%}%>
+                
+            </table>
+    </div>
+</body>
+
+</html>

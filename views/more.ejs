@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td    {
+            border: 2px solid black;
+            border-collapse: collapse;
+            width: 1218px;
+        }
+
+        .sec{
+            text-align: center  ;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        body {
+            background-color: rgb(164, 255, 247);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Dixit Kaneriya,  24DEV099,  28/02/2024</h1>
+    <h2 class="heading">Detailed Result of Student with Id : <%= data[0].id %></h2>
+    <div class="sec">
+        <% var sum = Number(data[0].Total_Marks)+Number(data[1].Total_Marks)+Number(data[2].Total_Marks)+Number(data[3].Total_Marks)+Number(data[5].Total_Marks); %>
+        <table>
+            <tr>
+                <td>
+                    <b style="font-size: 30px;">Student Id : <%= data[0].id %></b>
+                </td>
+            </tr>
+            <tr>
+                <th>Subject id</th>
+                <th>Total Prelim(100)</th>
+                <th>Total Terminal(100)</th>
+                <th>Total Final(100)</th>
+                <th>Total Marks(300)</th>
+            </tr>
+            <% for(var i=0; i<data.length; i++) {%>
+                <tr>
+                    <td>
+                        <%=data[i].sub_id %>
+                    </td>
+                    <td>
+                        <%=data[i].Total_Prelims%>
+                    </td>
+                    <td>
+                        <%=data[i].Total_Terminal%>
+                    </td>
+                    <td>
+                        <%=data[i].Total_Final%>
+                    </td>
+                    <td>
+                        <%=data[i].Total_Marks%>
+                    </td>
+                </tr>
+                <%}%>
+
+                <tr>
+                    <td colspan="4"><b>Sum</b></td>
+                    <td><%= sum %></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4"><b>Percentage</b></td>
+                    <td><%= parseFloat(sum *100/1800).toFixed(2)%>%</td>
+                </tr>
+        </table>
+    </div>
+</body>
+</html>

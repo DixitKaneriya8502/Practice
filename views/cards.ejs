@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination per section</title>
+
+    <!-- Basic style -->
+    <style>
+        .img-container {
+            margin: 20px auto;
+            width: 40%;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            outline: none;
+            padding: 12px;
+            border: none;
+            background-color: rgb(25, 121, 211);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-group {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <form id="form1" name="job_application" method="post" action="/form" onsubmit="return validateForm()"
+        class="form-group active">
+        <fieldset>
+            <legend><b>Basic Details</b></legend>
+            <label for="fname">First Name :</label>
+            <input type="text" name="fname">
+            <span id="alertfname" style="display: none; color: red;">First Name is </span>
+            <br><br>
+            <label for="lname">Last name :</label>
+            <input type="text" name="lname">
+            <span id="alertlname" style="display: none; color: red;">Last Name is </span>
+            <br><br>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email">
+            <span id="alertemail" style="display: none; color: red;">Email is </span>
+            <br><br>
+            <label for="Address1">Address1 :</label>
+            <input type="text" id="Address1" name="address1">
+            <span id="alertadd1" style="display: none; color: red;">Address is </span>
+            <br><br>
+            <label for="Address2">Address2 :</label>
+            <input type="text" id="Address2" name="address2">
+            <br>
+            <p>Gender :
+                <input type="radio" name="gender" id="male">
+                <label for="Male">Male</label>
+                <input type="radio" name="gender" id="female">
+                <label for="female">Female</label>
+                <span id="alertgender" style="display: none; color: red;">Gender is </span>
+                <br><br>
+                <label for="city">City :</label>
+                <select name="city" id="city">
+                    <option value="select_city">
+                        Select city name</option>
+                    <option value="Ahmedabad" id="Ahmedabad">Ahmedabad
+                    </option>
+                    <option value="Surat" id="Surat">Surat
+                    </option>
+                    <option value="Rajkot" id="Rajkot">Rajkot</option>
+                    <option value="Vadodara" id="Vadodara">Vadodara
+                    </option>
+                    <option value="Mumbai" id="Mumbai">Mumbai</option>
+                    <option value="Pune" id="Pune">Pune
+                    </option>
+                    <option value="Bandra" id="Bandra">Bandra</option>
+                    <span id="alertcity" style="display: none; color: red;">City is </span>
+                </select>
+
+                <br><br>
+                <label for="State">State :</label>
+                <select name="state" id="State">
+                    <option value="select_state">
+                        Select State name</option>
+                    <option value="Gujarat">Gujarat
+                    </option>
+                    <option value="Maharastra">Maharastra</option>
+                </select><br><br>
+                <label for="birthday">Birthday :</label>
+                <input type="text" id="birthday" name="bday" placeholder="yyyy/mm/dd">
+                <span id="alertbday" style="display: none; color: red;">Birthdate is </span>
+                <br><br>
+                <label for="zip code">Zip Code :</label>
+                <input type="text" id="Zip Code" name="zipcode">
+                <span id="alertzip" style="display: none; color: red;">Zip Code </span>
+                <br><br>
+                <label for="Relationship Status">Relationship Status :</label>
+                <select name="rstatus" id="Relationship Status">
+                    <option value="marital_status">Select Relationship Status
+                    </option>
+                    <option value="Single">Single
+                    </option>
+                    <option value="Married">Married
+                    </option>
+                </select>
+                <!-- <input type="submit" value="Submit">
+                        <input type="button" value="Update" id="update"> -->
+        </fieldset>
+        <br>
+
+        <input type="button" value="Next" class="btn" onclick="showForm(2)">
+
+    </form>
+
+    <form id="form2" method="post" name="application" action="/form" onsubmit="return validate()" class="form-group">
+
+        <fieldset>
+
+            <legend><b>Education Details</b></legend>
+            <h5>SSC Result</h5>
+            <label for="Name of Board">Name of Board :</label>
+            <input type="text" id="Name of Board" name="board[]">
+            <span id="alertboardssc" style="display: none; color: red;">Board name </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]">
+            <span id="alertyear1" style="display: none; color: red;">Passing year </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage">
+            <span id="alertpercent" style="display: none; color: red;">Percentage </span>
+            <hr>
+            <h5>HSC/Diploma Result</h5>
+            <label for="Name of Board">Name of Board :</label>
+            <input type="text" id="Name of Board" name="board[]">
+            <span id="alertboardhsc" style="display: none; color: red;">Board name </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]">
+            <span id="alertyearnew" style="display: none; color: red;">Passing year </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage">
+            <span id="alertpercentnew" style="display: none; color: red;">Percentage </span>
+            <hr>
+
+            <h5>Bachelor Degree</h5>
+            <label for="Course Name">Course Name :</label>
+            <input type="text" id="Course Name" name="board[]">
+            <span id="alertcourse" style="display: none; color: red;">Course Required</span>
+            <!-- &nbsp;&nbsp;
+<label for="University">University :</label>
+<input type="text" id="University" name="university">
+<span id="alertuni" style="display: none; color: red;">University Required</span> -->
+            &nbsp;&nbsp;
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]">
+            <span id="alertpass" style="display: none; color: red;">Passing Year Required</span>
+            &nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage">
+            <span id="alertperbh" style="display: none; color: red;">Percentage Required</span>
+
+            <hr>
+
+            <h5>Master Degree</h5>
+            <label for="Course Name">Course Name :</label>
+            <input type="text" id="Course Name" name="board[]">
+            <span id="alertcoursemaster" style="display: none; color: red;">Course name required</span>
+            &nbsp;&nbsp;
+            <!-- <label for="University">University :</label>
+<input type="text" id="University" name="universityms">
+<span id="alertunims" style="display: none; color: red;">University Required</span>
+&nbsp;&nbsp; -->
+            <label for="Passing Year">Passing Year :</label>
+            <input type="text" id="Passing Year" name="pyear[]">
+            <span id="alertpass3" style="display: none; color: red;">Passing Year Required</span>
+            &nbsp;&nbsp;
+            <label for="Percentage">Percentage :</label>
+            <input type="text" name="percentage[]" id="Percentage">
+            <span id="alertperms" style="display: none; color: red;">Percentage Required</span>
+
+        </fieldset>
+        <br>
+        <input type="button" value="Previous" class="btn" onclick="showForm(1)">
+        <input type="button" value="Next" class="btn" onclick="showForm(3)">
+
+
+        <br>
+    </form>
+
+    <form id="form3" method="post" name="application3" action="/" onsubmit="return validate3()" class="form-group">
+
+        <fieldset>
+            <legend><b>Work Experience</b></legend>
+            <label for="Company Name">Company Name :</label>
+            <input type="text" name="CompanyName" id="Company Name">
+            <span id="alertcomp" style="display: none; color: red;">Company Required</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Designation">Designation :</label>
+            <input type="text" name="designation" id="Designation">
+            <span id="alertdesignation" style="display: none; color: red;">Designation Required</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Joining Date">Joining Date:</label>
+            <input type="date" id="Joining Date" name="joiningDate">
+            <span id="alertjoindate" style="display: none; color: red;">Joining Date Required</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Ending Date">Ending Date:</label>
+            <input type="date" id="Ending Date" name="endingDate">
+            <span id="alertenddate" style="display: none; color: red;">Ending Date Required</span>
+            <br><br>
+            <label for="Company Name">Company Name :</label>
+            <input type="text" name="Company Name" id="Company Name">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Designation">Designation :</label>
+            <input type="text" name="Designation" id="Designation">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Joining Date">Joining Date:</label>
+            <input type="date" id="Joining Date" name="Joining Date">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Ending Date">Ending Date:</label>
+            <input type="date" id="Ending Date" name="Ending Date"><br><br>
+            <label for="Company Name">Company Name :</label>
+            <input type="text" name="Company Name" id="Company Name">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Designation">Designation :</label>
+            <input type="text" name="Designation" id="Designation">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Joining Date">Joining Date:</label>
+            <input type="date" id="Joining Date" name="Joining Date">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="Ending Date">Ending Date:</label>
+            <input type="date" id="Ending Date" name="Ending Date"><br>
+
+
+        </fieldset>
+        <br>
+
+        <input type="button" value="Previous" class="btn" onclick="showForm(2)">
+        <input type="submit" value="Submit" class="btn">
+        <input type="button" value="Update" id="update" class="btn">
+
+        <br>
+    </form>
+
+    <script>
+        function showForm(forNumber) {
+            var forms = document.querySelectorAll('.form-group');
+            forms.forEach(form => form.classList.remove('active'));
+
+            var selectedForm = document.getElementById('form' + forNumber);
+            selectedForm.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

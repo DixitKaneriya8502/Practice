@@ -3,6 +3,7 @@ const app = express()
 const fs = require("fs")
 const port = 6570
 const bodyParser = require("body-parser")
+const util = require("util");
 const db = require('./db')
 const path = require("path")
 const { log } = require("console")
@@ -116,8 +117,8 @@ app.get("/pagination", (req, res) => {
 
 app.get("/pagination/:id", (req, res) => {
     if (true) {
-    res.render('postdetails', {id : req.params.id})
-}
+        res.render('postdetails', { id: req.params.id })
+    }
 })
 
 app.get('/kuku', (req, res) => {
@@ -139,11 +140,143 @@ app.get('/posts/:id', (req, res) => {
 // })
 // console.log("hello");
 
+app.get('/sqlinsert', (req, res) => {
+    res.render('indexmysql');
+});
+
+app.post('/query', async(req, res) => {
+    const sqlQuery = req.body.query;
+    // db.query(sqlQuery, (err, results) => {
+        // if (err) throw err;
+        var [results] = await db.query(sqlQuery)
+        res.render('result', { query: sqlQuery, results: results });
+    // });
+});
+
+app.get('/validation', (req, res) => {
+    res.render('validation.ejs');
+})
+
+app.post('/formvalidate', async(req, res) => {
+    try {
+        console.log(req.body);
 
 
+        let inquery = `insert into basic_details1 (fname, lname, email, address1, address2, gender, city, state, bday, zipcode, rstatus) values('${req.body.fname}','${req.body.lname}','${req.body.email}','${req.body.address1}','${req.body.address2}','${req.body.gender}','${req.body.city}','${req.body.state}','${req.body.bday}','${req.body.zipcode}','${req.body.rstatus}')`;
+        console.log(inquery);
 
 
+        // s_id = result.insertId;
+        // console.log(s_id);
 
+        // db.query(inquery, function (error, result) {
+
+        //     call(result.insertId)
+        var [results] = await db.query(inquery)
+
+            return res.end("Data generated whoo!!");
+        }
+
+    catch (error) {
+        return res.write("Try again please")
+    }
+
+
+    function call(s_id) {
+
+        try {
+
+            let boardNamenew = req.body.board
+            let pyear = req.body.pyear
+            let percentage = req.body.percentage
+
+            // let inquery2;
+
+            for (i = 0; i < boardNamenew.length; i++) {
+                console.log(req.body);
+                let inquery2 = `insert into edu_details (s_id, boardName, passyear, percent) values('${s_id}','${boardNamenew[i]}','${pyear[i]}','${percentage[i]}')`;
+                console.log(inquery2);
+
+
+                console.log("print");
+                db.query(inquery2, function (error, result) {
+                    // console.log(inquery2);
+                    return res.end("Data generated!!");
+                });
+            }
+        }
+
+        catch (error) {
+            return res.write("Try again!!")
+        }
+
+        // try {
+        //     let comp = req.body.CompanyName
+        //     let post = req.body.designation
+        //     let jdate = req.body.joiningDate
+        //     let edate = req.body.endingDate
+
+        //     for (j=0; j<comp.length; j++) {
+        //         console.log(re.body);
+        //         let inquery3 = `insert into work_experience (s_id, comp, desi, jdate, edate) values('${s_id}','${comp[j]}','${post[j]}','${jdate[j]}','${edate[j]}')`;
+        //         console.log(inquery3);
+
+        //         db.query(inquery3, function(error, result) {
+        //             return res.end("Data generated!!");
+        //         })
+        //     }
+        // }
+        // catch (error) {
+        //     return res.write("Try again !!")
+        // }
+
+    }
+
+
+    // function call(s_id) {
+    //     try {
+
+    //         let boardName = req.body.board
+    //         let pyear = req.body.pyear
+    //         let percentage = req.body.percentage
+
+    //         let inquery2;
+    //         // for (i = 0; i < boardName.length; i++) {
+    //         inquery2 = `insert into education_details (s_id, board, pyear, percentage) values('${s_id}','${boardName}','${pyear}','${percentage}')`;
+    //         console.log(inquery2);
+
+    //         db.query(inquery2, function (error, result) {
+    //             return res.end("Data generated!!");
+    //         });
+    //         // }
+    //     }
+
+    //     catch (error) {
+    //         return res.write("Try again")
+    //     }
+
+    // }
+    console.log("ello");
+})
+
+// app.get('/formvalidate/:s_id', function (req, res) {
+//     var userid = req.params.s_id;
+//     if (userid) {
+//         var sql = `select * from basic_details1 where s_id = '${userid}'`;
+//         db.query(sql, function (err, data) {
+//             if (err) throw err;
+//             res.render('validation.ejs', { data: data[0] });
+//         })
+//     }
+// })
+
+app.get('/time', (req, res) => {
+    res.render('date');
+})
+
+app.get('/cards', (req, res) => {
+    res.render('cards');
+})
 
 
 
@@ -208,7 +341,7 @@ app.post("/more", (req, res) => {
 
     console.log("Deleted button has been clicked: " + req.body.buttonId)
 
-    
+
 
     var data1 = JSON.parse(data)
     var pass
@@ -224,6 +357,36 @@ app.post("/more", (req, res) => {
     console.log(pass);
     res.render("dummy", { data: pass });
 });
+
+app.get('/exam', async(req, res) => {
+    let recordperpage = 400;
+    let totalrecords = 400;
+    let query = `select students.id, students.firstName as Name, sum(exam.prilims_mark_th) as Theory, sum(exam.prilims_mark_pr) as Pracical, sum(exam.terminal_mark_th) as Theory_1, sum(exam.terminal_mark_pr) as Practical_1, sum(exam.final_marks_th) as Theory_2, sum(exam.final_marks_pr) as Practical_2 from students join exam where students.id = exam.id group by students.id;`;
+
+    let pquery = util.promisify(db.query).bind(db);
+    // let [result] = await pquery(query);
+    var [result] = await db.query(query);
+
+    res.render('examhtml', {data: result, total: totalrecords});
+});
+
+app.get('/more/:studentid', async (req, res) => {
+    let recordperpage = 400;
+    let totalrecords = 400;
+    let studentid = req.params.studentid;
+
+    let query = `select exam.id, exam.sub_id, sum(prilims_mark_pr + prilims_mark_th) as Total_Prelims, sum(terminal_mark_pr + terminal_mark_th) as Total_Terminal, sum(final_marks_pr + final_marks_th) as Total_Final,
+    sum(prilims_mark_pr + prilims_mark_th + terminal_mark_pr + terminal_mark_th + final_marks_pr + final_marks_th) as Total_Marks from exam where id=${studentid} group by sub_id order by sub_id;`;
+
+    let pquery = util.promisify(db.query).bind(db);
+    // let [result] = await pquery(query);
+    var [result] = await db.query(query);
+
+    res.render('more', {data: result, total: totalrecords});
+});
+
+
+
 
 
 
