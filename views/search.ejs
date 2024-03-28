@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particular Search</title>
+    <style>
+        .full {
+            display: flex;
+            gap: 260px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+
+            th, td {
+                height: 30px;
+                width: 90px;
+            }
+        }
+
+        .guide{
+            margin-left: 30px;
+        }
+
+        .tbl {
+            margin-left: 35px;
+        }
+
+        .form {
+            padding-top: 50px;
+        }
+
+        .maintbl {
+            margin-left: 300px;
+        }
+
+        .box {
+            height: 30px;
+            width: 200px;
+        }
+
+        .btngo {
+            height: 37px;
+            width: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Dixit Kaneriya, 24DEV099, 05/03/2024</h1>
+    <h2 class="heading">"Searching Grid"</h2>
+    <hr>
+
+    <div class="full">
+
+        <div class="guide">
+            <h4 class="tbl">Searching Guide</h4>
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Symbol</th>
+                </tr>
+
+                <tr>
+                    <td>firstName</td>
+                    <td>"_"</td>
+                </tr>
+
+                <tr>
+                    <td>lastName</td>
+                    <td>"^"</td>
+                </tr>
+
+                <tr>
+                    <td>dob</td>
+                    <td>"$"</td>
+                </tr>
+
+                <tr>
+                    <td>gender</td>
+                    <td>"{"</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form">
+            <form action="/" method="get">
+                <input type="text" class="box" name="textarea" placeholder="Enter Search Items">
+                <input type="submit" class="btngo" value="Go">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="maintbl">
+        <table>
+            <tr>
+                <th style="width: 50px;">ID</th>
+                <th style="width: 80px;">First Name</th>
+                <th style="width: 80px;">Last Name</th>
+                <th style="width: 300px;">DOB</th>
+                <th style="width: 50px;">Gender</th>
+            </tr>
+
+            <% for (let i=0; i<data.length; i++) { %>
+
+                <tr>
+                    <td><%= data[i].id%></td>
+                    <td><%= data[i].firstName%></td>
+                    <td><%= data[i].lastName%></td>
+                    <td><%= data[i].dob%></td>
+                    <td><%= data[i].gender%></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+
+</body>
+</html>
