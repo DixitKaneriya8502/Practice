@@ -1,93 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    <style>
-        .paging {
-            display: flex;
-            gap: 20px;
-        }
+  <style>
+    .paging {
+      display: flex;
+      gap: 20px;
+    }
 
-        table, th {
-            border: 2px solid black;
-            text-align: center;
-        }
+    table,
+    th {
+      border: 2px solid black;
+      text-align: center;
+    }
 
-        .heading {
-            text-align: center;
-            font-size: 30px;
-        }
+    .heading {
+      text-align: center;
+      font-size: 30px;
+    }
 
-        body {
-            background-color: lightgreen;
-        }
+    body {
+      background-color: lightgreen;
+    }
 
-        .txt {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            text-transform: capitalize;
-        }
+    .txt {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      text-transform: capitalize;
+    }
 
-        .arrow {
-            display: flex;
-            gap: 20px;
-            padding: 20px;
-            justify-content: center;
-            font-weight: bolder;
-        }
+    .arrow {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+      font-weight: bolder;
+    }
 
-        .ar {
-            text-decoration: none;
-            size: 50px;
-        }
-    </style>
+    .ar {
+      text-decoration: none;
+      size: 50px;
+    }
+  </style>
 </head>
+
 <body>
 
-    <h2 class="heading">Data Sheet of DB: "school10"</h2>
+  <h2 class="heading">Data Sheet of DB: "school10"</h2>
 
-    <table>
-        <tr>
-            <th class="txt">std_id</th>
-            <th class="txt">firstname</th>
-            <th class="txt">lastname</th>
-            <th class="txt">email</th>
-            <th class="txt">dob</th>
-            <th class="txt">gender</th>
-            <th class="txt">country</th>
-            <th class="txt">city</th>
-        </tr>
+  <table>
+    <tr>
+      <th class="txt">std_id</th>
+      <th class="txt">firstname</th>
+      <th class="txt">lastname</th>
+      <th class="txt">email</th>
+      <th class="txt">dob</th>
+      <th class="txt">gender</th>
+      <th class="txt">country</th>
 
-        <% for (let i=0; i<data.length; i++) { %> 
-            <tr>
-                <td><%= data[i].std_id %></td>
-                <td><%= data[i].firstname %></td>
-                <td><%= data[i].lastname %></td>
-                <td><%= data[i].email %></td>
-                <td><%= data[i].dob %></td>
-                <td><%= data[i].gender %></td>
-                <td><%= data[i].country %></td>
-                <td><%= data[i].city %></td>
-            </tr>
-       <% } %>
-</table>
 
-    <div class="arrow">
-        <a href="/page?page=<%= 1 %>" class="ar"><<</a>
+
+
+      <th class="txt">city</th>
+    </tr>
+
+    <% for (let i=0; i<data.length; i++) { %>
+    <tr>
+      <td><%= data[i].std_id %></td>
+      <td><%= data[i].firstname %></td>
+      <td><%= data[i].lastname %></td>
+      <td><%= data[i].email %></td>
+      <td><%= data[i].dob %></td>
+      <td><%= data[i].gender %></td>
+      <td><%= data[i].country %></td>
+      <td><%= data[i].city %></td>
+    </tr>
+    <% } %>
+  </table>
+
+  <div class="arrow">
+    <a href="/page?page=<%= 1 %>" class="ar">
+      << </a>
 
         <% if(page > 1) { %>
-            <a href="/page?page=<%=page-1%>" class="ar"><</a>
-        <% } %>
+        <a href="/page?page=<%=page-1%>" class="ar">
 
-        <label><%= page %></label>
+          < </a>
+            <% } %>
 
-        <% if (page < numberOfPages) { %>
+            <label><%= page %></label>
+
+            <% if (page < numberOfPages) { %>
             <a href="/page?page=<%=page+1%>" class="ar">></a>
-        <% } %>
+            <% } %>
 
-        <a href="/page?page=<%= numberOfPages %>" class="ar">>></a>
-    </div>
+            <a href="/page?page=<%= numberOfPages %>" class="ar">>></a>
+  </div>
 </body>
+
 </html>
