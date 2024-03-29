@@ -75,19 +75,19 @@
     </table>
 
     <div class="arrow">
-        <a href="/?page=<%= 1 %>" class="ar"><<</a>
+        <a href="/page?page=<%= 1 %>" class="ar"><<</a>
 
         <% if(page > 1) { %>
-            <a href="/?page=<%=page-1%>" class="ar"><</a>
+            <a href="/page?page=<%=page-1%>" class="ar"><</a>
         <% } %>
 
         <label><%= page %></label>
 
         <% if (page < numberOfPages) { %>
-            <a href="/?page=<%=page+1%>" class="ar">></a>
+            <a href="/page?page=<%=page+1%>" class="ar">></a>
         <% } %>
 
-        <a href="/?page=<%= numberOfPages %>" class="ar">>></a>
+        <a href="/page?page=<%= numberOfPages %>" class="ar">>></a>
     </div>
 </body>
 </html>

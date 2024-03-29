@@ -144,12 +144,12 @@ app.get('/sqlinsert', (req, res) => {
     res.render('indexmysql');
 });
 
-app.post('/query', async(req, res) => {
+app.post('/query', async (req, res) => {
     const sqlQuery = req.body.query;
     // db.query(sqlQuery, (err, results) => {
-        // if (err) throw err;
-        var [results] = await db.query(sqlQuery)
-        res.render('result', { query: sqlQuery, results: results });
+    // if (err) throw err;
+    var [results] = await db.query(sqlQuery)
+    res.render('result', { query: sqlQuery, results: results });
     // });
 });
 
@@ -157,7 +157,7 @@ app.get('/validation', (req, res) => {
     res.render('validation.ejs');
 })
 
-app.post('/formvalidate', async(req, res) => {
+app.post('/formvalidate', async (req, res) => {
     try {
         console.log(req.body);
 
@@ -174,8 +174,8 @@ app.post('/formvalidate', async(req, res) => {
         //     call(result.insertId)
         var [results] = await db.query(inquery)
 
-            return res.end("Data generated whoo!!");
-        }
+        return res.end("Data generated whoo!!");
+    }
 
     catch (error) {
         return res.write("Try again please")
@@ -358,7 +358,7 @@ app.post("/more", (req, res) => {
     res.render("dummy", { data: pass });
 });
 
-app.get('/exam', async(req, res) => {
+app.get('/exam', async (req, res) => {
     let recordperpage = 400;
     let totalrecords = 400;
     let query = `select students.id, students.firstName as Name, sum(exam.prilims_mark_th) as Theory, sum(exam.prilims_mark_pr) as Pracical, sum(exam.terminal_mark_th) as Theory_1, sum(exam.terminal_mark_pr) as Practical_1, sum(exam.final_marks_th) as Theory_2, sum(exam.final_marks_pr) as Practical_2 from students join exam where students.id = exam.id group by students.id;`;
@@ -367,7 +367,7 @@ app.get('/exam', async(req, res) => {
     // let [result] = await pquery(query);
     var [result] = await db.query(query);
 
-    res.render('examhtml', {data: result, total: totalrecords});
+    res.render('examhtml', { data: result, total: totalrecords });
 });
 
 app.get('/more/:studentid', async (req, res) => {
@@ -382,19 +382,19 @@ app.get('/more/:studentid', async (req, res) => {
     // let [result] = await pquery(query);
     var [result] = await db.query(query);
 
-    res.render('more', {data: result, total: totalrecords});
+    res.render('more', { data: result, total: totalrecords });
 });
 
-app.get('/newhtml/:page', async (req,res) => {
+app.get('/newhtml/:page', async (req, res) => {
 
 
-    let page =req.params.page||  1;
-    
+    let page = req.params.page || 1;
+
     console.log(page);
-    if(page>4 || page<1){
+    if (page > 4 || page < 1) {
         res.end('page not found')
     }
-    
+
     let recordperpage = 50;
     let totalrecords = 200;
     page = Number(page);
@@ -402,7 +402,7 @@ app.get('/newhtml/:page', async (req,res) => {
     let start = page * recordperpage - recordperpage;
 
     // console.log(start);
-    
+
     let field = req.query.orderby || 'id'
     let orderdir = req.query.orderdir || 'asc'
     let month = req.query.month || '12';
@@ -414,7 +414,7 @@ app.get('/newhtml/:page', async (req,res) => {
     var [result] = await db.query(query)
     // console.log(result);
 
-    res.render('newhtml', {data: result,start:start, pageno: page, total: totalrecords, month: month, who: who});
+    res.render('newhtml', { data: result, start: start, pageno: page, total: totalrecords, month: month, who: who });
 
 });
 
@@ -425,7 +425,7 @@ app.get('/newhtml/:page', async (req,res) => {
 //         if(page>4 || page<1){
 //         res.end('page not found')
 //     }
-    
+
 //     let recordperpage = 50;
 //     let totalrecords = 200;
 //     let start = page * recordperpage - recordperpage;
@@ -433,7 +433,7 @@ app.get('/newhtml/:page', async (req,res) => {
 //     let month = req.query.month || '12';
 //     let who = 'filter';
 //     let query = `select students.id, students.firstName, students.lastName, count(attendance1.statuss) as att , (count(attendance1.statuss)/(select count(distinct dates) from attendance1 where Month(dates) = '1'))*100 as pr from students join attendance1 where students.id = attendance1.id and attendance1.statuss = 'P' and students.id = ${id} and Month(attendance1.dates) = ${month} group by students.id limit ${recordperpage} offset ${start} ;`;
- 
+
 
 //     // console.log("hii");
 //     // db.query(query, (error, result) => {
@@ -448,8 +448,8 @@ app.get('/newhtml/:page', async (req,res) => {
 //     }
 // })
 
-app.get('/searchgrid', async(req, res) => {
-    
+app.get('/searchgrid', async (req, res) => {
+
     var search = req.query.textarea || " "
     console.log(search);
     var split = search.split(/[_^${]/)
@@ -457,10 +457,10 @@ app.get('/searchgrid', async(req, res) => {
     var alastName = [];
     var adob = [];
     var agender = [];
-    for (i=1; i<split.length; i++) {
+    for (i = 1; i < split.length; i++) {
         var index = search.indexOf(split[i])
         console.log(index);
-        var symbolindex = index-1;
+        var symbolindex = index - 1;
         console.log(symbolindex);
         var char = search.charAt(symbolindex)
         console.log(char);
@@ -483,62 +483,98 @@ app.get('/searchgrid', async(req, res) => {
     }
 
 
-        var temp = []
-        if(afirstName.length > 0) {
-            var fname = afirstName.join(" or ");
-            console.log(fname);
-            temp.push(fname);
-        }
+    var temp = []
+    if (afirstName.length > 0) {
+        var fname = afirstName.join(" or ");
+        console.log(fname);
+        temp.push(fname);
+    }
 
-        if (alastName.length > 0) {
-            var lname = alastName.join(" or ");
-            console.log(lname);
-            temp.push(lname);
-        }
+    if (alastName.length > 0) {
+        var lname = alastName.join(" or ");
+        console.log(lname);
+        temp.push(lname);
+    }
 
-        if (adob.length > 0) {
-            var birth = adob.join(" or ");
-            console.log(birth);
-            temp.push(birth);
-        }
+    if (adob.length > 0) {
+        var birth = adob.join(" or ");
+        console.log(birth);
+        temp.push(birth);
+    }
 
-        if (agender.length > 0) {
-            var gend = agender.join(" or ");
-            console.log(gend);
-            temp.push(gend);
-        }
+    if (agender.length > 0) {
+        var gend = agender.join(" or ");
+        console.log(gend);
+        temp.push(gend);
+    }
 
-        if (temp.length > 0) {
-            var querybody = " where " + temp.join(" and ");
-        }
-console.log(querybody);
-        console.log(querybody);
+    if (temp.length > 0) {
+        var querybody = " where " + temp.join(" and ");
+    }
+    console.log(querybody);
+    console.log(querybody);
 
-        // db.connect(function(err) {
-            // if(err) {
-            //     console.log("error occured");
-            // };
-            
-            console.log("Connected");
-            if(!req.query.textarea) {
-                var sql = "select * from students"  
+    // db.connect(function(err) {
+    // if(err) {
+    //     console.log("error occured");
+    // };
+
+    console.log("Connected");
+    if (!req.query.textarea) {
+        var sql = "select * from students"
+    }
+    else if (temp.length != 0) {
+        sql = `select * from students ${querybody}`
+    }
+    else {
+        var displaynone = 0;
+    }
+    console.log(sql);
+    // db.query(sql, (err, result) => {
+    var [result] = await db.query(sql)
+
+    console.log(result);
+    res.render("search", { data: result, displaynone })
+    // })
+});
+
+app.get('/page', async(req, res) => {
+    let sql = 'SELECT * FROM student10 limit 50000';
+    // con.query(sql, (err, result) => {
+        // if (err) throw err;
+        var [result] = await db.query(sql)
+        const numOfResults = result.length;
+        const resultsPerPage = 200;
+        console.log(numOfResults);
+        const numberOfPages = Math.ceil(numOfResults / resultsPerPage);
+        console.log(numberOfPages);
+        let page = req.query.page ? Number(req.query.page) : 1;
+        console.log(page);
+        if (page > numberOfPages) {
+            res.redirect('/?page=' + encodeURIComponent(numberOfPages));
+        } else if (page < 1) {
+            res.redirect('/?page=' + encodeURIComponent('1'));
+        }
+        //Determine the SQL LIMIT starting number
+        const startingLimit = (page - 1) * resultsPerPage;
+        //Get the relevant number of POSTS for this starting page
+        sql = `SELECT * FROM student10 ORDER BY lastname LIMIT ${startingLimit},${resultsPerPage}`;
+        // db.query(sql, (err, result) => {
+            // if (err) throw err;
+            var [result] = await db.query(sql)
+            let iterator = (page - 5) < 1 ? 1 : page - 5;
+            let endingLink = (iterator + 9) <= numberOfPages ? (iterator + 9) : page + (numberOfPages - page);
+            if (endingLink < (page + 4)) {
+                iterator -= (page + 4) - numberOfPages;
             }
-            else if (temp.length != 0) {
-                sql = `select * from students ${querybody}`
-            }
-            else {
-                var displaynone = 0;
-            }
-            console.log(sql);
-            // db.query(sql, (err, result) => {
-                var [result] = await db.query(sql)
-                
-                console.log(result);
-               res.render("search", {data: result, displaynone})
-            // })
-        });
+            res.render('comp', { data: result, page, iterator, endingLink, numberOfPages });
+        // });
+    // });
+});
 
-        
+
+
+
 
 
 
