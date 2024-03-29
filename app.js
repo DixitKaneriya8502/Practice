@@ -551,9 +551,9 @@ app.get('/page', async(req, res) => {
         let page = req.query.page ? Number(req.query.page) : 1;
         console.log(page);
         if (page > numberOfPages) {
-            res.redirect('/?page=' + encodeURIComponent(numberOfPages));
+            res.redirect('/page?page=' + encodeURIComponent(numberOfPages));
         } else if (page < 1) {
-            res.redirect('/?page=' + encodeURIComponent('1'));
+            res.redirect('/page?page=' + encodeURIComponent('1'));
         }
         //Determine the SQL LIMIT starting number
         const startingLimit = (page - 1) * resultsPerPage;
