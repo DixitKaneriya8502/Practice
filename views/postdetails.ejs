@@ -21,7 +21,7 @@
 
     <script>
         const postId = window.location.pathname.split('/').pop();
-        fetch(`/postdetailroute/${postId}`)
+        fetch(`/postdetail/${postId}`)
         .then(response => response.text())
         .then(data => {
             document.getElementById('postDetails').innerHTML = data;

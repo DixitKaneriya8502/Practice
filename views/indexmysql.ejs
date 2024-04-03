@@ -4,15 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MySQL Query</title>
+  <style>
+    table, th, td {
+      border: 2px solid black;
+      text-align: center;
+    }
+
+    .head {
+      border: 2px solid black;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
   <h1>MySQL Query Generator </h1>
-  <form action="/query" method="post">
+  <form action="/sqlinsert" method="post">
     <label for="query">Enter Your SQL Query:</label><br>
     <textarea name="query" id="query" rows="4" cols="50" placeholder="Query Input"></textarea><br>
     <button type="submit">Submit</button>
   </form>
-  
+  <br><br><br>
+  <span class="head">Database name is "schoolnew"</span>
+  <br><br>
+  <table>
+    <tr>
+      <th>Sr No.:</th>
+      <th>Query</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>select * from students;</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>select * from edu_details;</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>select * from basic_details1;</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>select * from attendance1;</td>
+    </tr>
+  </table>
 </body>
 </html>
