@@ -9,7 +9,7 @@
     <div>
         
         <div>
-            <form action="/search" method="post" class="f1">
+            <form action="/newhtml/:page" method="get" class="f1">
                 <input type="text" name="id" placeholder="Enter student id">
                 <input type="submit" Value="Go">
             </form>
@@ -23,7 +23,7 @@
         <br><br>
 
         <div id="filters" class="f1">
-            <form action="/searchfilters" method="post">
+            <form action="/searchfilters" method="get">
                 <input type="text" name="firstName" placeholder="Enter First Name to filter">
                 <input type="text" name="lastName" placeholder="Enter Last Name to filter">
                 <input type="number" name="pr" placeholder="Enter Perecntage to filter">

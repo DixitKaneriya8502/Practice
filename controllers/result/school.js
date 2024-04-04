@@ -1,6 +1,7 @@
-const db = require('../../db')
+// const db = require('../../db')
 const md5 = require("md5")
 const util = require("util");
+const db = require("../../db");
 
 exports.attendance = async (req, res) => {
 

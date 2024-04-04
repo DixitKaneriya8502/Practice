@@ -5,13 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Form</title>
-    <script src="jobapplicationform.js"></script>
+    <style>
+        #sub {
+            outline: none;
+            padding: 12px;
+            border: none;
+            background-color: rgb(25, 121, 211);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            margin-top: 30px;
+            margin-left: 50%;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Employee Job Application</h1>
 
-    <form name="job_application" method="post" action="/formvalidate" onsubmit="return validateForm()">
+    <form name="job_application" method="post" action="/validation" onsubmit="return validateForm()">
         <fieldset>
             <legend><b>Basic Details</b></legend>
             <label for="fname">First Name :</label>
@@ -74,10 +86,9 @@
                     <option value="Single" >Single</option>
                     <option value="Married" >Married</option>
                 </select>
-                <input type="submit" value="Submit">
-                <!-- <input type="button" value="Update" id="update"> -->
-        <!-- </fieldset>
-    </form>
+                
+        </fieldset>
+    <!-- </form>
 
     <br>
 
@@ -149,7 +160,7 @@
             <input type="text" name="percentage[]" id="Percentage">
             <span id="alertperms" style="display: none; color: red;">Percentage Required</span>
         </fieldset>
-
+        <input type="submit" value="Submit" id="sub">
         <br>
     </form>
 
@@ -653,50 +664,17 @@
             return true;
         }
 
+        // let s_id = '';
+        // const event = document.querySelectorAll('./event');
+        // const next = document.querySelectorAll('./next');
+        // const pre = document.querySelectorAll('./pre');
 
-
-        // var checkboxese = document.getElementsByName('languageenglish');
-        // var isCheckede = false;
-
-        // for (var i = 0; i < checkboxese.length; i++) {
-        //     if (checkboxese[i].checked) {
-        //         isCheckede = true;
-        //         var skillboxese = document.getElementsByName('skilles');
-        //         var isSkille = false;
-
-        //         for (var j = 0; j < skillboxese.length; j++) {
-        //             if (skillboxese[j].checked) {
-        //                 isSkille = true;
-        //                 break;
-        //             }
-        //             if (isSkille == false) {
-        //                 document.getElementById("alertskill").style.display = "block"
-        //                 return false;
-        //             }
-        //         }
-        //     }
-        // }
-
-        // if (isCheckede == false) {
-        //     document.getElementById("alertbox").style.display = "block"
-        //     return false;
-        // }
-
-        // return true;
-
-
-
-        let s_id = '';
-        const event = document.querySelectorAll('./event');
-        const next = document.querySelectorAll('./next');
-        const pre = document.querySelectorAll('./pre');
-
-        next.forEach(function (button, index) {
-            button.addEventListener('click', function() {
-                let object = {}
-                let 
-            })
-        })
+        // next.forEach(function (button, index) {
+        //     button.addEventListener('click', function() {
+        //         let object = {}
+        //         let 
+        //     })
+        // })
 
     </script>
 </body>

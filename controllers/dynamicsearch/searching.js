@@ -3,8 +3,9 @@ const md5 = require("md5")
 
 exports.dynamicsearch = async (req, res) => {
 
-  var search = req.query.textarea || " "
+  var search = req.query.textarea || ""
   console.log(search);
+  
   var split = search.split(/[_^${]/)
   var afirstName = [];
   var alastName = [];
@@ -12,11 +13,11 @@ exports.dynamicsearch = async (req, res) => {
   var agender = [];
   for (i = 1; i < split.length; i++) {
       var index = search.indexOf(split[i])
-      console.log(index);
+    //   console.log(index);
       var symbolindex = index - 1;
-      console.log(symbolindex);
+    //   console.log(symbolindex);
       var char = search.charAt(symbolindex)
-      console.log(char);
+    //   console.log(char);
 
       if (char == "_") {
           afirstName.push(`firstName like '${split[i]}%'`);
@@ -45,19 +46,19 @@ exports.dynamicsearch = async (req, res) => {
 
   if (alastName.length > 0) {
       var lname = alastName.join(" or ");
-      console.log(lname);
+    //   console.log(lname);
       temp.push(lname);
   }
 
   if (adob.length > 0) {
       var birth = adob.join(" or ");
-      console.log(birth);
+    //   console.log(birth);
       temp.push(birth);
   }
 
   if (agender.length > 0) {
       var gend = agender.join(" or ");
-      console.log(gend);
+    //   console.log(gend);
       temp.push(gend);
   }
 
