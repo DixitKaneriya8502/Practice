@@ -10,7 +10,7 @@ const { fetch} = require("./controllers/fetchapi/fetching")
 const { sqlquery, sqldata } = require("./controllers/dynamicquery/sql")
 const { validateform, validateformdata } = require("./controllers/validationform/validate")
 const { timedata } = require("./controllers/timzone/time")
-const { card } = require("./controllers/cards/card")
+const { card, carddata } = require("./controllers/cards/card")
 const { route } = require("./controllers/noroute/none")
 const { exam, examdata, attendance } = require("./controllers/result/school")
 const { dynamicsearch } = require("./controllers/dynamicsearch/searching")
@@ -46,7 +46,7 @@ router.route("/validation").get(validateform).post(validateformdata)
 
 router.route("/time").get(timedata)
 
-router.route("/cards").get(card)
+router.route("/cards").get(card).post(carddata)
 
 router.route("/newhtml/:page").get(attendance)
 router.route("/exam").get(exam)

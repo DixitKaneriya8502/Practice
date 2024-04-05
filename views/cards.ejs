@@ -46,7 +46,7 @@
 </head>
 
 <body>
-    <form id="form1" name="job_application" method="post" action="/form" onsubmit="return validateForm()"
+    <form id="form1" name="job_application" method="post" action="/cards" onsubmit="return validateForm()"
         class="form-group active">
         <fieldset>
             <legend><b>Basic Details</b></legend>
@@ -71,7 +71,7 @@
             <br>
             <p>Gender :
                 <input type="radio" name="gender" id="male">
-                <label for="Male">Male</label>
+                <label for="male">Male</label>
                 <input type="radio" name="gender" id="female">
                 <label for="female">Female</label>
                 <span id="alertgender" style="display: none; color: red;">Gender is </span>
@@ -125,11 +125,12 @@
         </fieldset>
         <br>
 
-        <input type="button" value="Next" class="btn" onclick="showForm(2)">
+        <!-- <input type="button" value="Next" class="btn" onclick="showForm(2)"> -->
 
-    </form>
+    <!-- </form>
 
-    <form id="form2" method="post" name="application" action="/form" onsubmit="return validate()" class="form-group">
+    <form id="form2" method="post" name="application" action="/cards" onsubmit="return validate()"
+        class="form-group"> -->
 
         <fieldset>
 
@@ -199,14 +200,15 @@
 
         </fieldset>
         <br>
-        <input type="button" value="Previous" class="btn" onclick="showForm(1)">
-        <input type="button" value="Next" class="btn" onclick="showForm(3)">
+        <!-- <input type="button" value="Previous" class="btn" onclick="showForm(1)">
+        <input type="button" value="Next" class="btn" onclick="showForm(3)"> -->
 
 
         <br>
-    </form>
+    <!-- </form>
 
-    <form id="form3" method="post" name="application3" action="/" onsubmit="return validate3()" class="form-group">
+    <form id="form3" method="post" name="application3" action="/cards" onsubmit="return validate3()"
+        class="form-group"> -->
 
         <fieldset>
             <legend><b>Work Experience</b></legend>
@@ -253,7 +255,7 @@
         </fieldset>
         <br>
 
-        <input type="button" value="Previous" class="btn" onclick="showForm(2)">
+        <!-- <input type="button" value="Previous" class="btn" onclick="showForm(2)"> -->
         <input type="submit" value="Submit" class="btn">
         <!-- <input type="button" value="Update" id="update" class="btn"> -->
 
@@ -269,8 +271,331 @@
             selectedForm.classList.add('active');
         }
 
-        
+        const winreload = () => {
+            window.location.reload()
+        }
+
+        // const enDisFields = (lang) => {
+        //     console.log(lang);
+        //     let subfields = document.querySelectorAll(`.sub-${lang}field`)
+        //     console.log('sub', subfields);
+        //     for (i = 0; i < subfields.length; i++) {
+        //         if (subfields[i].disabled) {
+        //             subfields[i].disabled = false;
+        //         }
+        //         else {
+        //             subfields[i].checked = false;
+        //             subfields[i].disabled = true;
+        //         }
+        //     }
+        // }
+
+        function validateForm() {
+
+            let x = document.forms["job_application"]["fname"].value;
+            fnameregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (fnameregex.test(x) == false) {
+                document.getElementById("alertfname").style.display = "block";
+                return false;
+            }
+
+            let y = document.forms["job_application"]["lname"].value;
+            lnameregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (lnameregex.test(y) == false) {
+                document.getElementById("alertlname").style.display = "block";
+                return false;
+            }
+
+            let mail = document.forms["job_application"]["email"].value;
+            emailregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            if (emailregex.test(mail) == false) {
+                document.getElementById("alertemail").style.display = "block"
+                // alert("change")
+                return false;
+            }
+
+            let add1 = document.forms["job_application"]["Address1"].value;
+            add1regex = /^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$/
+            if (add1regex.test(add1) == false) {
+                document.getElementById("alertadd1").style.display = "block"
+                return false;
+            }
+
+            // let gend = document.forms["job_application"]["Gender"].value;
+            // genderregex = /?:m|M|male|Male|f|F|female|Female|FEMALE|MALE|Not prefer to say)$/;
+            if (document.getElementById("male").checked) {
+                document.getElementById("male").value;
+            }
+            else if (document.getElementById("female").checked) {
+                document.getElementById("female").value;
+            }
+            else {
+                document.getElementById("alertgender").style.display = "block";
+                return false;
+            }
+
+
+            let bday = document.forms["job_application"]["birthday"].value;
+            bdayregex = /[\/\-\.]/
+            if (bdayregex.test(bday) == false) {
+                document.getElementById("alertbday").style.display = "block"
+                return false;
+            }
+
+            let zipcode = document.forms["job_application"]["Zip Code"].value;
+            zipregex = /(^\d{6}$)|(^\d{4}-\d{8}$)/
+            if (zipregex.test(zipcode) == false) {
+                document.getElementById("alertzip").style.display = "block"
+                return false;
+            }
+        // }
+
+
+        // function validate() {
+
+            let boardssc = document.forms["job_application"]["board"].value;
+            boardregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (boardregex.test(boardssc) == false) {
+                document.getElementById('alertboardssc').style.display = "block";
+                return false;
+            }
+
+            let yearssc = document.forms["job_application"]["pyear"].value;
+            yearregex = /^\d{4}$/
+            if (yearregex.test(yearssc) == false) {
+                document.getElementById("alertyear1").style.display = "block"
+                return false;
+            }
+
+            let per = document.forms["job_application"]["percentage"].value;
+            percentregex = /^\d{2}$/
+            if (percentregex.test(per) == false) {
+                document.getElementById("alertpercent").style.display = "block"
+                return false;
+            }
+
+            let boardhsc = document.forms["job_application"]["board"].value;
+            boardregex2 = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (boardregex2.test(boardhsc) == false) {
+                document.getElementById("alertboardhsc").style.display = "block"
+                return false;
+            }
+
+            let yearnew = document.forms["job_application"]["pyear"].value;
+            yearregexnew = /^\d{4}$/
+            if (yearregexnew.test(yearnew) == false) {
+                document.getElementById("alertyearnew").style.display = "block"
+                return false;
+            }
+
+            let percentnew = document.forms["job_application"]["percentage"].value;
+            percentregexn = /^\d{2}$/
+            if (percentregexn.test(percentnew) == false) {
+                document.getElementById("alertpercentnew").style.display = "block"
+                return false;
+            }
+
+            let coursee = document.forms["job_application"]["CourseName"].value;
+            courseregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (courseregex.test(coursee) == false) {
+                document.getElementById("alertcourse").style.display = "block"
+                return false;
+            }
+
+            let uni = document.forms["job_application"]["university"].value;
+            uniregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (uniregex.test(uni) == false) {
+                document.getElementById("alertuni").style.display = "block"
+                return false;
+            }
+
+            let yearsecond = document.forms["job_application"]["PassingYear2"].value;
+            yearregex = /^\d{4}$/
+            if (yearregex.test(yearsecond) == false) {
+                document.getElementById("alertpass").style.display = "block"
+                return false;
+            }
+
+            let percentba = document.forms["job_application"]["percentagebh"].value;
+            percentregexnew = /^\d{2}$/
+            if (percentregexnew.test(percentba) == false) {
+                document.getElementById("alertperbh").style.display = "block"
+                return false;
+            }
+
+            let courseemaster = document.forms["job_application"]["CourseNamemaster"].value;
+            courseregexmaster = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (courseregexmaster.test(courseemaster) == false) {
+                document.getElementById("alertcoursemaster").style.display = "block"
+                return false;
+            }
+
+            let unimaster = document.forms["job_application"]["universityms"].value;
+            uniregexmaster = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (uniregexmaster.test(unimaster) == false) {
+                document.getElementById("alertunims").style.display = "block"
+                return false;
+            }
+
+            let yearms = document.forms["job_application"]["PassingYear3"].value;
+            yearregexms = /^\d{4}$/
+            if (yearregexms.test(yearms) == false) {
+                document.getElementById("alertpass3").style.display = "block"
+                return false;
+            }
+
+            let percentms = document.forms["job_application"]["percentagems"].value;
+            percentregexms = /^\d{2}$/
+            if (percentregexms.test(percentms) == false) {
+                document.getElementById("alertperms").style.display = "block"
+                return false;
+            }
+        // }
+
+        // function validate3() {
+
+            let comp = document.forms["application3"]["CompanyName"].value;
+            compregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (compregex.test(comp) == false) {
+                document.getElementById("alertcomp").style.display = "block"
+                return false;
+            }
+
+            let desig = document.forms["application3"]["designation"].value;
+            desigregex = /^[a-zA-Z]+[a-zA-Z]+$/
+            if (desigregex.test(desig) == false) {
+                document.getElementById("alertdesignation").style.display = "block"
+                return false;
+            }
+
+            let joinday = document.forms["application3"]["joiningDate"].value;
+            joindayregex = /[\/\-\.]/
+            if (joindayregex.test(joinday) == false) {
+                document.getElementById("alertjoindate").style.display = "block"
+                return false;
+            }
+
+            let endday = document.forms["application3"]["endingDate"].value;
+            enddayregex = /[\/\-\.]/
+            if (enddayregex.test(endday) == false) {
+                document.getElementById("alertenddate").style.display = "block"
+                return false;
+            }
+        }
+
+        // function validate4() {
+        //     var checkboxesh = document.getElementsByName('languagehindi');
+        //     var isCheckedh = false;
+
+        //     for (var i = 0; i < checkboxesh.length; i++) {
+        //         if (checkboxesh[i].checked) {
+        //             isCheckedh = true;
+
+        //             var skillboxesh = document.getElementsByName('skillhs');
+        //             var isSkillh = false;
+
+        //             for (var j = 0; j < skillboxesh.length; j++) {
+        //                 if (skillboxesh[j].checked) {
+        //                     isSkillh = true;
+        //                     return;
+        //                 }
+
+        //                 if (isSkillh == false) {
+        //                     document.getElementById("alertskill").style.display = "block"
+        //                     return false;
+        //                 }
+        //             }
+
+
+        //             var skillboxesr = document.getElementsByName('skillhr');
+        //             var isSkillr = false;
+
+        //             for (var k = 0; k < skillboxesr.length; k++) {
+        //                 if (skillboxesr[k].checked) {
+        //                     isSkillr = true;
+        //                     return;
+        //                 }
+
+        //                 if (isSkillr == false) {
+        //                     document.getElementById("alertskill").style.display = "block"
+        //                     return false;
+        //                 }
+        //             }
+
+        //         }
+
+        //         else if (isCheckedh == false) {
+        //             // document.getElementById("alertbox").style.display = "block"
+        //             if (isSkillh = true) {
+        //                 document.getElementById("alertbox").style.display = "block"
+        //                 return false;
+        //             }
+        //             if (isSkillh == false) {
+        //                 return true;
+        //             }
+        //         }
+
+        //         else if (isCheckedh == false) {
+        //             // document.getElementById("alertbox").style.display = "block"
+        //             if (isSkillr = true) {
+        //                 document.getElementById("alertbox").style.display = "block"
+        //                 return false;
+        //             }
+        //             if (isSkillr == false) {
+        //                 return true;
+        //             }
+        //         }
+        //     }
+
+        //     return true;
+        // }
+
+
+
+        // var checkboxese = document.getElementsByName('languageenglish');
+        // var isCheckede = false;
+
+        // for (var i = 0; i < checkboxese.length; i++) {
+        //     if (checkboxese[i].checked) {
+        //         isCheckede = true;
+        //         var skillboxese = document.getElementsByName('skilles');
+        //         var isSkille = false;
+
+        //         for (var j = 0; j < skillboxese.length; j++) {
+        //             if (skillboxese[j].checked) {
+        //                 isSkille = true;
+        //                 break;
+        //             }
+        //             if (isSkille == false) {
+        //                 document.getElementById("alertskill").style.display = "block"
+        //                 return false;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // if (isCheckede == false) {
+        //     document.getElementById("alertbox").style.display = "block"
+        //     return false;
+        // }
+
+        // return true;
+
+
+
+        // let s_id = '';
+        // const event = document.querySelectorAll('./event');
+        // const next = document.querySelectorAll('./next');
+        // const pre = document.querySelectorAll('./pre');
+
+        // next.forEach(function (button, index) {
+        //     button.addEventListener('click', function () {
+        //         let object = {}
+        //     })
+        // })
+
     </script>
+
 </body>
 
 </html>

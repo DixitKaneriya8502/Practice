@@ -11,7 +11,7 @@ exports.validateformdata = async (req, res) => {
 
 
       let inquery = `insert into basic_details1 (fname, lname, email, address1, address2, gender, city, state, bday, zipcode, rstatus) values('${req.body.fname}','${req.body.lname}','${req.body.email}','${req.body.address1}','${req.body.address2}','${req.body.gender}','${req.body.city}','${req.body.state}','${req.body.bday}','${req.body.zipcode}','${req.body.rstatus}')`;
-    //   console.log(inquery);
+      console.log(inquery);
 
       // s_id = result.insertId;
       // console.log(s_id);
